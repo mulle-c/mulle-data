@@ -18,9 +18,7 @@ list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake/reflect")
 list( INSERT CMAKE_MODULE_PATH 0 "${PROJECT_SOURCE_DIR}/cmake")
 
 include( Environment)
-
 include( Files)
-include( Dependencies)
 
 if( "${MULLE_PROJECT_TYPE}" STREQUAL "Executable")
 
@@ -74,5 +72,20 @@ else()
    message( ERROR "Unknown project type \"${MULLE_PROJECT_TYPE}")
 
 endif()
+
+
+set( EXECUTABLE_NAME mulle-fnv1a)
+
+# only need the hash function (done like this if runtime is built as shared)
+set( EXECUTABLE_SOURCES  ${MULLE_FNVA1})
+
+set( EXECUTABLE_DEPENDENCY_NAMES "mulle-data")
+
+# only need the hash function
+set( EXECUTABLE_LIBRARY_LIST "mulle-data")
+
+include( Executable)
+
+include( InstallExecutable)
 
 include( FinalOutput OPTIONAL)

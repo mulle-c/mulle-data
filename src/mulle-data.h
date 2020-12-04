@@ -95,6 +95,8 @@ static inline int   mulle_data_is_invalid( struct mulle_data data)
 // fnva1 hash for small strings especially ObjC selectors
 #include "mulle-fnv1a.h"
 
+// prime code for hashtables 
+#include "mulle-prime.h"
 
 
 static inline uintptr_t   _mulle_data_hash( struct mulle_data data)

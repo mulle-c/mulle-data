@@ -7,8 +7,8 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# Generated from sourcetree: mulle-c11;no-all-load,no-import,no-link,no-singlephase;
-# Disable with: `mulle-sourcetree mark mulle-c11 no-link`
+# Generated from sourcetree: mulle-c11;no-all-load,no-cmakeinherit,no-import,no-link,no-recurse,no-singlephase;
+# Disable with: `mulle-sourcetree mark mulle-c11 no-header`
 #
 if( NOT MULLE_C11_HEADER)
    find_file( MULLE_C11_HEADER NAMES mulle-c11.h mulle-c11/mulle-c11.h)
@@ -24,47 +24,7 @@ if( NOT MULLE_C11_HEADER)
       CACHE INTERNAL "need to cache this"
    )
    if( MULLE_C11_HEADER)
-      #
-      # Inherit ObjC loader and link dependency info.
-      # Disable with: `mulle-sourcetree mark mulle-c11 no-cmakeinherit`
-      #
-      get_filename_component( _TMP_MULLE_C11_ROOT "${MULLE_C11_HEADER}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_C11_NAME "${_TMP_MULLE_C11_ROOT}" NAME)
-      get_filename_component( _TMP_MULLE_C11_ROOT "${_TMP_MULLE_C11_ROOT}" DIRECTORY)
-      get_filename_component( _TMP_MULLE_C11_ROOT "${_TMP_MULLE_C11_ROOT}" DIRECTORY)
-      #
-      # Search for "DependenciesAndLibraries.cmake" to include.
-      # Disable with: `mulle-sourcetree mark mulle-c11 no-cmakedependency`
-      #
-      foreach( _TMP_MULLE_C11_NAME IN LISTS _TMP_MULLE_C11_NAME)
-         set( _TMP_MULLE_C11_DIR "${_TMP_MULLE_C11_ROOT}/include/${_TMP_MULLE_C11_NAME}/cmake")
-         # use explicit path to avoid "surprises"
-         if( EXISTS "${_TMP_MULLE_C11_DIR}/DependenciesAndLibraries.cmake")
-            unset( MULLE_C11_DEFINITIONS)
-            list( INSERT CMAKE_MODULE_PATH 0 "${_TMP_MULLE_C11_DIR}")
-            # we only want top level INHERIT_OBJC_LOADERS, so disable them
-            if( NOT NO_INHERIT_OBJC_LOADERS)
-               set( NO_INHERIT_OBJC_LOADERS OFF)
-            endif()
-            list( APPEND _TMP_INHERIT_OBJC_LOADERS ${NO_INHERIT_OBJC_LOADERS})
-            set( NO_INHERIT_OBJC_LOADERS ON)
-            #
-            include( "${_TMP_MULLE_C11_DIR}/DependenciesAndLibraries.cmake")
-            #
-            list( GET _TMP_INHERIT_OBJC_LOADERS -1 NO_INHERIT_OBJC_LOADERS)
-            list( REMOVE_AT _TMP_INHERIT_OBJC_LOADERS -1)
-            #
-            list( REMOVE_ITEM CMAKE_MODULE_PATH "${_TMP_MULLE_C11_DIR}")
-            set( INHERITED_DEFINITIONS
-               ${INHERITED_DEFINITIONS}
-               ${MULLE_C11_DEFINITIONS}
-               CACHE INTERNAL "need to cache this"
-            )
-            break()
-         else()
-            message( STATUS "${_TMP_MULLE_C11_DIR}/DependenciesAndLibraries.cmake not found")
-         endif()
-      endforeach()
+      # intentionally left blank
    else()
       message( FATAL_ERROR "MULLE_C11_HEADER was not found")
    endif()

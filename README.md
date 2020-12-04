@@ -15,7 +15,7 @@ It also contains the convenient `struct mulle_data` to keep `bytes` and
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-data to your project:
 
 ``` console
-mulle-sde dependency add --c --github <|GITHUB_USER|> mulle-data
+mulle-sde dependency add --c --github mulle-c mulle-data
 ```
 
 ## Install
@@ -27,7 +27,7 @@ and all its dependencies:
 
 ```
 mulle-sde install --prefix /usr/local \
-   https://github.com/<|GITHUB_USER|>/mulle-data/archive/latest.tar.gz
+   https://github.com/mulle-c/mulle-data/archive/latest.tar.gz
 ```
 
 ### Manual Installation

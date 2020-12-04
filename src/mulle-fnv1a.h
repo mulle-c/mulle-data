@@ -33,15 +33,50 @@
  * 64 bit value.
  * Investigate reading 64 bits instead of just 8.
  */
-
 # include <stdint.h>
 # include <stddef.h>
 
-#define MULLE_OBJC_FNV1A_32_INIT    0x811c9dc5
-#define MULLE_OBJC_FNV1A_64_INIT    0xcbf29ce484222325ULL
+#define MULLE_FNV1A_32_INIT    0x811c9dc5
+#define MULLE_FNV1A_64_INIT    0xcbf29ce484222325ULL
 
-#define MULLE_OBJC_FNV1A_32_PRIME   0x01000193
-#define MULLE_OBJC_FNV1A_64_PRIME   0x0100000001b3ULL
+
+static inline uintptr_t   _mulle_fnv1a_init( void)
+{
+   if( sizeof( uintptr_t) == sizeof( uint32_t))
+      return( MULLE_FNV1A_32_INIT);
+   return( MULLE_FNV1A_64_INIT);
+}
+
+
+#define MULLE_FNV1A_32_PRIME   0x01000193
+#define MULLE_FNV1A_64_PRIME   0x0100000001b3ULL
+
+
+static inline uint32_t
+   _mulle_fnv1a_step_32( uint32_t hash, unsigned char value)
+{
+   hash ^= value;
+   hash *= MULLE_FNV1A_32_PRIME;
+   return( hash);
+}
+
+
+static inline uint64_t
+   _mulle_fnv1a_step_64( uint64_t hash, unsigned char value)
+{
+   hash ^= value;
+   hash *= MULLE_FNV1A_64_PRIME;
+   return( hash);
+}
+
+
+static inline uintptr_t   _mulle_fnv1a_step( uintptr_t hash, unsigned char value)
+{
+   if( sizeof( uintptr_t) == sizeof( uint32_t))
+      return( (uintptr_t) _mulle_fnv1a_step_32( hash, value));
+   return( (uintptr_t) _mulle_fnv1a_step_64( hash, value));
+}
+
 
 
 uint32_t   _mulle_fnv1a_chained_32( void *buf, size_t len, uint32_t hash);
@@ -50,13 +85,13 @@ uint64_t   _mulle_fnv1a_chained_64( void *buf, size_t len, uint64_t hash);
 
 static inline uint32_t   _mulle_fnv1a_32( void *buf, size_t len)
 {
-   return( _mulle_fnv1a_chained_32( buf, len, MULLE_OBJC_FNV1A_32_INIT));
+   return( _mulle_fnv1a_chained_32( buf, len, MULLE_FNV1A_32_INIT));
 }
 
 
 static inline uint64_t   _mulle_fnv1a_64( void *buf, size_t len)
 {
-   return( _mulle_fnv1a_chained_64( buf, len, MULLE_OBJC_FNV1A_64_INIT));
+   return( _mulle_fnv1a_chained_64( buf, len, MULLE_FNV1A_64_INIT));
 }
 
 
@@ -69,13 +104,14 @@ static inline uintptr_t   _mulle_fnv1a( void *buf, size_t len)
 
 
 static inline uintptr_t   _mulle_fnv1a_chained( void *buf,
-                                                     size_t len,
-                                                     uintptr_t hash)
+                                                size_t len,
+                                                uintptr_t hash)
 {
    if( sizeof( uintptr_t) == sizeof( uint32_t))
       return( (uintptr_t) _mulle_fnv1a_chained_32( buf, len, (uint32_t) hash));
    return( (uintptr_t) _mulle_fnv1a_chained_64( buf, len, (uint64_t) hash));
 }
+
 
 
 // unfortunately can't put it into a switch statement label
@@ -94,7 +130,7 @@ static inline uint32_t
    while( s < sentinel)
    {
       hash ^= (uint32_t) *s++;
-      hash *= MULLE_OBJC_FNV1A_32_PRIME;
+      hash *= MULLE_FNV1A_32_PRIME;
    }
 
    return( hash);
@@ -116,7 +152,7 @@ static inline uint64_t
    while( s < sentinel)
    {
       hash ^= (uint64_t) *s++;
-      hash *= MULLE_OBJC_FNV1A_64_PRIME;
+      hash *= MULLE_FNV1A_64_PRIME;
    }
 
    return( hash);
@@ -125,13 +161,13 @@ static inline uint64_t
 
 static inline uint32_t   _mulle_fnv1a_32_inline( void *buf, size_t len)
 {
-   return( _mulle_fnv1a_chained_32_inline( buf, len, MULLE_OBJC_FNV1A_32_INIT));
+   return( _mulle_fnv1a_chained_32_inline( buf, len, MULLE_FNV1A_32_INIT));
 }
 
 
 static inline uint64_t   _mulle_fnv1a_64_inline( void *buf, size_t len)
 {
-   return( _mulle_fnv1a_chained_64_inline( buf, len, MULLE_OBJC_FNV1A_64_INIT));
+   return( _mulle_fnv1a_chained_64_inline( buf, len, MULLE_FNV1A_64_INIT));
 }
 
 
@@ -144,8 +180,8 @@ static inline uintptr_t   _mulle_fnv1a_inline( void *buf, size_t len)
 
 
 static inline uintptr_t   _mulle_fnv1a_chained_inline( void *buf,
-                                                            size_t len,
-                                                            uintptr_t hash)
+                                                       size_t len,
+                                                       uintptr_t hash)
 {
    if( sizeof( uintptr_t) == sizeof( uint32_t))
       return( (uintptr_t) _mulle_fnv1a_chained_32_inline( buf, len, (uint32_t) hash));

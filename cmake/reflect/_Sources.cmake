@@ -5,6 +5,10 @@ if( MULLE_TRACE_INCLUDE)
    MESSAGE( STATUS "# Include \"${CMAKE_CURRENT_LIST_FILE}\"" )
 endif()
 
+set( MULLE_FNVA1
+src/mulle-fnva1/main.c
+)
+
 set( SOURCES
 src/farmhash/farmhash.c
 src/mulle-data.c

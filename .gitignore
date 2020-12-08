@@ -17,6 +17,7 @@ xcuserdata/
 project.xcworkspace/
 stacktrace/
 malloc-error/
+research/
 
 environment-user-*.sh
 environment-host-*.sh

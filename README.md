@@ -12,11 +12,19 @@ It also contains the convenient `struct mulle_data` to keep `bytes` and
 
 ## Add
 
-Use [mulle-sde](//github.com/mulle-sde) to add mulle-data to your project:
+### Either: link library
 
-``` console
-mulle-sde dependency add --c --github mulle-c mulle-data
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-buffer to your project:
+
 ```
+mulle-sde dependency add --c --github mulle-c mulle-buffer
+```
+
+### Or: add Sources
+
+Alternatively you can read [STEAL.md](//github.com/mulle-c11/dox/STEAL.md) on
+how to add mulle-c source code into your own projects.
+
 
 ## Install
 

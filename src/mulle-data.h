@@ -5,6 +5,8 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <assert.h>
+
 
 /*
  *  (c) 2020 nat <|ORGANIZATION|>
@@ -95,20 +97,23 @@ static inline int   mulle_data_is_invalid( struct mulle_data data)
 // fnva1 hash for small strings especially ObjC selectors
 #include "mulle-fnv1a.h"
 
-// prime code for hashtables 
+// prime code for hashtables
 #include "mulle-prime.h"
 
 
-static inline uintptr_t   _mulle_data_hash( struct mulle_data data)
+static inline uintptr_t   mulle_data_hash( struct mulle_data data)
 {
+   assert( data.bytes || (! data.bytes && ! data.length));
    if( sizeof( uintptr_t) == sizeof( uint32_t))
       return( (uintptr_t) _mulle_hash_32( data.bytes, data.length));
    return( (uintptr_t) _mulle_hash_64( data.bytes, data.length));
 }
 
 
-static inline uintptr_t   _mulle_data_hash_chained( struct mulle_data data, uintptr_t hash)
+static inline uintptr_t   mulle_data_hash_chained( struct mulle_data data, uintptr_t hash)
 {
+   assert( data.bytes || (! data.bytes && ! data.length));
+
    if( sizeof( uintptr_t) == sizeof( uint32_t))
       return( (uintptr_t) _mulle_hash_chained_32( data.bytes, data.length, (uint32_t) hash));
    return( (uintptr_t) _mulle_hash_chained_64( data.bytes, data.length, (uint64_t) hash));

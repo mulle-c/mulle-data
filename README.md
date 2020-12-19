@@ -9,6 +9,10 @@
 It also contains the convenient `struct mulle_data` to keep `bytes` and
 `length` together and to pass it around.
 
+| Release Version
+|-----------------------------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-c/mulle-data/actions)
+
 
 ## Add
 
@@ -43,10 +47,10 @@ mulle-sde install --prefix /usr/local \
 
 Install the requirements:
 
-Requirements                                      | Description
---------------------------------------------------|-----------------------
-[mulle-c11](//github.com/mulle-c/mulle-c11)       | C compile glue
-[farmhash](//github.com/mulle-c/farmhash)         | Data hash function
+Requirements                                | Description
+--------------------------------------------|-----------------------
+[mulle-c11](//github.com/mulle-c/mulle-c11) | C compiler glue
+[farmhash](//github.com/mulle-c/farmhash)   | Data hash function
 
 Install into `/usr/local`:
 

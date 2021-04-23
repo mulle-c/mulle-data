@@ -20,19 +20,19 @@ export PROJECT_NAME="mulle-data"
 #
 #
 #
-export PROJECT_IDENTIFIER="mulle_data"
 
-
-#
-#
-#
-export PROJECT_DOWNCASE_IDENTIFIER="mulle_data"
 
 
 #
 #
 #
-export PROJECT_UPCASE_IDENTIFIER="MULLE_DATA"
+
+
+
+#
+#
+#
+
 
 
 #

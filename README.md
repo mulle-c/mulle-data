@@ -6,8 +6,12 @@
 * FNV1A for hashing strings for hashtables
 * farmhash for (large) data
 
-It also contains the convenient `struct mulle_data` to keep `bytes` and
+It contains the convenient `struct mulle_data` to keep `bytes` and
 `length` together and to pass it around.
+
+And it contains `struct mulle_range`, which represents ranges of data with
+a location (offset) and a length.
+
 
 | Release Version
 |-----------------------------------
@@ -21,7 +25,7 @@ It also contains the convenient `struct mulle_data` to keep `bytes` and
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-buffer to your project:
 
 ```
-mulle-sde dependency add --c --github mulle-c mulle-buffer
+mulle-sde dependency add --c --marks no-cmake-inherit --github mulle-c mulle-buffer
 ```
 
 ### Or: add Sources

@@ -13,7 +13,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DATA_VERSION  ((0 << 20) | (0 << 8) | 1)
+#define MULLE_DATA_VERSION  ((0 << 20) | (0 << 8) | 2)
 
 
 static inline unsigned int   mulle_data_get_version_major( void)
@@ -100,6 +100,8 @@ static inline int   mulle_data_is_invalid( struct mulle_data data)
 // prime code for hashtables
 #include "mulle-prime.h"
 
+// range is convenient for mulle_data and will be used more in the future
+#include "mulle-range.h"
 
 static inline uintptr_t   mulle_data_hash( struct mulle_data data)
 {

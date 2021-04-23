@@ -40,11 +40,22 @@
 #define MULLE_FNV1A_64_INIT    0xcbf29ce484222325ULL
 
 
+static inline uintptr_t   _mulle_fnv1a_init_32( void)
+{
+   return( MULLE_FNV1A_32_INIT);
+}
+
+static inline uint64_t   _mulle_fnv1a_init_64( void)
+{
+   return( MULLE_FNV1A_64_INIT);
+}
+
+
 static inline uintptr_t   _mulle_fnv1a_init( void)
 {
    if( sizeof( uintptr_t) == sizeof( uint32_t))
-      return( MULLE_FNV1A_32_INIT);
-   return( MULLE_FNV1A_64_INIT);
+      return( _mulle_fnv1a_init_32());
+   return( _mulle_fnv1a_init_64());
 }
 
 

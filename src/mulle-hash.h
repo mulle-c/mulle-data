@@ -32,6 +32,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <assert.h>
 
 // from code.google.com/p/smhasher/wiki/MurmurHash3
 
@@ -85,12 +86,14 @@ static inline uintptr_t   mulle_float_hash( float f)
 {
    union
    {
-      float       f;
-      uintptr_t   v;
+      float      f;
+      uint32_t   v;
    } x =
    {
       .f = f
    };
+
+   assert( sizeof( float) == sizeof( uint32_t));
 
    return( mulle_integer_hash( x.v));
 }

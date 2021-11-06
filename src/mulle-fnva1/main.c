@@ -160,11 +160,11 @@ int   main( int argc, char *argv[])
 
 usage:
    fprintf( stderr, "Usage:\n   mulle-fnva1 [-32|-64] <string>*\n"
-                    "    Generates fnv1a hash values from strings."
+                    "    Generates fnv1a hash values from strings.\n"
                     "\n"
-                    "Options:"
-                    "   -32    : 32 bit hash"
-                    "   -64    : 64 bit hash"
+                    "Options:\n"
+                    "   -32    : 32 bit hash\n"
+                    "   -64    : 64 bit hash\n"
                     "\n"
                     "Environment:\n"
                     "   CSV    : output hash;name\n"

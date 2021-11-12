@@ -54,8 +54,8 @@ static inline uint64_t   _mulle_fnv1a_init_64( void)
 static inline uintptr_t   _mulle_fnv1a_init( void)
 {
    if( sizeof( uintptr_t) == sizeof( uint32_t))
-      return( _mulle_fnv1a_init_32());
-   return( _mulle_fnv1a_init_64());
+      return( (uintptr_t) _mulle_fnv1a_init_32());
+   return( (uintptr_t) _mulle_fnv1a_init_64());
 }
 
 

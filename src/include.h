@@ -25,6 +25,10 @@
 
 #include "_mulle-data-include.h"
 
+#ifndef MULLE_DATA_EXTERN_GLOBAL
+# define MULLE_DATA_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#endif
+
 /* You can add some more include statements here */
 
 #endif

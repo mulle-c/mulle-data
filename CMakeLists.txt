@@ -1,6 +1,9 @@
 cmake_minimum_required( VERSION 3.1)
 
 project( mulle-data C)
+
+add_definitions( -DMULLE_DATA_EXTERN_GLOBAL=extern)
+
 #
 # Turn a "Library" into an "Executable"
 # * touch src/main.m

@@ -89,8 +89,10 @@ static inline uintptr_t   _mulle_fnv1a_step( uintptr_t hash, unsigned char value
 }
 
 
-
+MULLE_DATA_EXTERN_GLOBAL
 uint32_t   _mulle_fnv1a_chained_32( void *buf, size_t len, uint32_t hash);
+
+MULLE_DATA_EXTERN_GLOBAL
 uint64_t   _mulle_fnv1a_chained_64( void *buf, size_t len, uint64_t hash);
 
 
@@ -198,6 +200,5 @@ static inline uintptr_t   _mulle_fnv1a_chained_inline( void *buf,
       return( (uintptr_t) _mulle_fnv1a_chained_32_inline( buf, len, (uint32_t) hash));
    return( (uintptr_t) _mulle_fnv1a_chained_64_inline( buf, len, (uint64_t) hash));
 }
-
 
 #endif /* mulle _objc_fnv1a_h */

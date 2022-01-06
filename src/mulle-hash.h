@@ -117,11 +117,17 @@ static inline uintptr_t   mulle_long_double_hash( long double ld)
 // is the hash littleendian/bigendian agnostic ?
 //
 
+MULLE_DATA_EXTERN_GLOBAL
 uint32_t   _mulle_hash_chained_32( void *bytes, size_t length, uint32_t hash);
+
+MULLE_DATA_EXTERN_GLOBAL
 uint64_t   _mulle_hash_chained_64( void *bytes, size_t length, uint64_t hash);
 
 
+MULLE_DATA_EXTERN_GLOBAL
 uint32_t   _mulle_hash_32( void *bytes, size_t length);
+
+MULLE_DATA_EXTERN_GLOBAL
 uint64_t   _mulle_hash_64( void *bytes, size_t length);
 
 

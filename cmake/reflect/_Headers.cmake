@@ -44,6 +44,7 @@ src/farmhash/largeint.h
 set( PUBLIC_GENERATED_HEADERS
 src/reflect/_mulle-data-include.h
 src/reflect/_mulle-data-provide.h
+src/reflect/_mulle-data-versioncheck.h
 )
 
 #

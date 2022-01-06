@@ -13,7 +13,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DATA_VERSION  ((0 << 20) | (0 << 8) | 2)
+#define MULLE_DATA_VERSION  ((0 << 20) | (0 << 8) | 3)
 
 
 static inline unsigned int   mulle_data_get_version_major( void)
@@ -34,7 +34,8 @@ static inline unsigned int   mulle_data_get_version_patch( void)
 }
 
 
-extern uint32_t   mulle_data_get_version( void);
+MULLE_DATA_EXTERN_GLOBAL
+uint32_t   mulle_data_get_version( void);
 
 
 //
@@ -120,5 +121,13 @@ static inline uintptr_t   mulle_data_hash_chained( struct mulle_data data, uintp
       return( (uintptr_t) _mulle_hash_chained_32( data.bytes, data.length, (uint32_t) hash));
    return( (uintptr_t) _mulle_hash_chained_64( data.bytes, data.length, (uint64_t) hash));
 }
+
+
+#ifdef __has_include
+# if __has_include( "_mulle-data-versioncheck.h")
+#  include "_mulle-data-versioncheck.h"
+# endif
+#endif
+
 
 #endif

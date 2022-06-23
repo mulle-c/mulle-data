@@ -1,3 +1,10 @@
+## 0.1.0
+
+* change some global declarations for windows
+* new generic `mulle_hash` function for data
+* new string hash function
+
+
 ### 0.0.3
 
 * fix `mulle_float_hash`

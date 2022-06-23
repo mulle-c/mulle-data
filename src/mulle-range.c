@@ -1,6 +1,6 @@
-#include "mulle-range.h"
-
 #include "include-private.h"
+
+#include "mulle-range.h"
 
 #include <assert.h>
 

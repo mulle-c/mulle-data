@@ -27,11 +27,13 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#include "include-private.h"
+
 #include "mulle-hash.h"
 
 #include "farmhash.h"
 
-
+#include <string.h>
 // lots of other code snipped
 
 uint32_t   _mulle_hash_32( void *bytes, size_t length)

@@ -154,11 +154,11 @@ static inline int  mulle_range_contains( struct mulle_range big, struct mulle_ra
 }
 
 
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 struct mulle_range   mulle_range_intersect( struct mulle_range range,
                                             struct mulle_range other);
 
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 struct mulle_range   mulle_range_union( struct mulle_range range,
                                         struct mulle_range other);
 
@@ -168,12 +168,12 @@ uintptr_t   mulle_range_hole_bsearch( struct mulle_range *buf,
                                       intptr_t search_location);
 
 // returns range containing search or NULL
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 struct mulle_range   *mulle_range_contains_bsearch( struct mulle_range *buf,
                                                     uintptr_t n,
                                                     struct mulle_range search);
 
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
                                                       uintptr_t n,
                                                       struct mulle_range search);

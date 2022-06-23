@@ -27,19 +27,21 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#include "include.h"
 
 #include <stdint.h>
 #include <stdlib.h>
 #include <assert.h>
 
 
+
 static inline uintptr_t  mulle_prime_for_depth( int depth)
 {
-   MULLE_DATA_EXTERN_GLOBAL
-   uintptr_t   __mulle_primes[];
+   MULLE_DATA_GLOBAL
+   uintptr_t   mulle_primes__[ 32 + 32 + 1];
 
    assert( depth >= -32 && depth <= 32);
-   return( __mulle_primes[ 32 + depth]);
+   return( mulle_primes__[ 32 + depth]);
 }
 
 

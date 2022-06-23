@@ -33,6 +33,8 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#define MULLE_DATA_BUILD
+ 
 #include "mulle-fnv1a.h"
 #include <ctype.h>
 #ifdef _WIN32

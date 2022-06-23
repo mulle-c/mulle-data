@@ -30,6 +30,8 @@
 #ifndef mulle_hash__h__
 #define mulle_hash__h__
 
+#include "include.h"
+
 #include <stddef.h>
 #include <stdint.h>
 #include <assert.h>
@@ -51,7 +53,7 @@ static inline uint32_t  mulle_hash_avalanche32( uint32_t h)
 
 
 // from code.google.com/p/smhasher/wiki/MurmurHash3
-static inline uint64_t   mulle_hash_avalanche64(uint64_t h)
+static inline uint64_t   mulle_hash_avalanche64( uint64_t h)
 {
    h ^= h >> 33;
    h *= 0xff51afd7ed558ccd;
@@ -64,9 +66,9 @@ static inline uint64_t   mulle_hash_avalanche64(uint64_t h)
 
 static inline uintptr_t   mulle_hash_avalanche( uintptr_t h)
 {
-   if( sizeof( uintptr_t) == sizeof( uint64_t))
-      return( (uintptr_t) mulle_hash_avalanche64( h));
-   return( (uintptr_t) mulle_hash_avalanche32( h));
+   if( sizeof( uintptr_t) == sizeof( uint32_t))
+      return( (uintptr_t) mulle_hash_avalanche32( h));
+   return( (uintptr_t) mulle_hash_avalanche64( h));
 }
 
 
@@ -111,24 +113,65 @@ static inline uintptr_t   mulle_long_double_hash( long double ld)
 }
 
 
+static inline uintptr_t   mulle_long_long_hash( long long value)
+{
+   return( mulle_hash_avalanche64( (uint64_t) value));
+}
+
+
+
 //
 // the chained hash and the regular hash are not compatible!
 //
 // is the hash littleendian/bigendian agnostic ?
 //
-
-MULLE_DATA_EXTERN_GLOBAL
+// length == -1 is not supported here. Use _mulle_hash_string for C
+// strings.
+//
+MULLE_DATA_GLOBAL
 uint32_t   _mulle_hash_chained_32( void *bytes, size_t length, uint32_t hash);
 
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 uint64_t   _mulle_hash_chained_64( void *bytes, size_t length, uint64_t hash);
 
 
-MULLE_DATA_EXTERN_GLOBAL
+static inline uintptr_t   _mulle_hash_chained( void *bytes, size_t length, uintptr_t hash)
+{
+   if( sizeof( uintptr_t) == sizeof( uint32_t))
+      return( (uintptr_t) _mulle_hash_chained_32( bytes, length, hash));
+   return( (uintptr_t) _mulle_hash_chained_64( bytes, length, hash));
+}
+
+
+static inline uintptr_t   mulle_hash_chained( void *bytes, size_t length, uintptr_t hash)
+{
+   if( ! bytes)
+      return( 0);
+   return( _mulle_hash_chained( bytes, length, hash));
+}
+
+
+
+MULLE_DATA_GLOBAL
 uint32_t   _mulle_hash_32( void *bytes, size_t length);
 
-MULLE_DATA_EXTERN_GLOBAL
+MULLE_DATA_GLOBAL
 uint64_t   _mulle_hash_64( void *bytes, size_t length);
 
+
+static inline uintptr_t   _mulle_hash( void *bytes, size_t length)
+{
+   if( sizeof( uintptr_t) == sizeof( uint32_t))
+      return( (uintptr_t) _mulle_hash_32( bytes, length));
+   return( (uintptr_t) _mulle_hash_64( bytes, length));
+}
+
+
+static inline uintptr_t   mulle_hash( void *bytes, size_t length)
+{
+   if( ! bytes)
+      return( 0);
+   return( _mulle_hash( bytes, length));
+}
 
 #endif

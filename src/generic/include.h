@@ -25,10 +25,15 @@
 
 #include "_mulle-data-include.h"
 
-#ifndef MULLE_DATA_EXTERN_GLOBAL
-# define MULLE_DATA_EXTERN_GLOBAL MULLE_C_EXTERN_GLOBAL
+#ifdef MULLE_DATA_BUILD
+# define MULLE_DATA_GLOBAL    MULLE_C_GLOBAL
+#else
+# if defined( MULLE_DATA_INCLUDE_DYNAMIC) || (defined( MULLE_INCLUDE_DYNAMIC) && ! defined( MULLE_DATA_INCLUDE_STATIC))
+#  define MULLE_DATA_GLOBAL   MULLE_C_EXTERN_GLOBAL
+# else
+#  define MULLE_DATA_GLOBAL   extern
+# endif
 #endif
-
 /* You can add some more include statements here */
 
 #endif

@@ -27,10 +27,14 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#include "include-private.h"
+
 #include "mulle-prime.h"
 
+#include <stdint.h>
 
-uintptr_t  __mulle_primes[ 32 + 32 + 1] =
+
+uintptr_t  mulle_primes__[ 32 + 32 + 1] =
 {
    2147483659U, 1073741827U, 536870923U, 268435459U,
    134217757, 67108879, 33554467, 16777259,

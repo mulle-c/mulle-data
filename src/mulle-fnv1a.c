@@ -4,26 +4,13 @@
 //
 //  Created by Nat! on 19.08.17
 
-/***
- *
- * Please do not copyright this code.  This code is in the public domain.
- *
- * LANDON CURT NOLL DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
- * INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO
- * EVENT SHALL LANDON CURT NOLL BE LIABLE FOR ANY SPECIAL, INDIRECT OR
- * CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
- * USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
- * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- * PERFORMANCE OF THIS SOFTWARE.
- *
- * By:
- *      chongo <Landon Curt Noll> /\oo/\
- *      http://www.isthe.com/chongo/
- *
- * Share and Enjoy!     :-)
- */
+
+#include "include-private.h"
 
 #include "mulle-fnv1a.h"
+
+#include <string.h>
+
 
 
 uint32_t   _mulle_fnv1a_chained_32( void *buf, size_t len, uint32_t hash)
@@ -36,6 +23,31 @@ uint64_t   _mulle_fnv1a_chained_64( void *buf, size_t len, uint64_t hash)
 {
    return( _mulle_fnv1a_chained_64_inline( buf, len, hash));
 }
+
+
+uint32_t   _mulle_string_hash_32( char *s)
+{
+   return( _mulle_fnv1a_32( s, strlen( s)));
+}
+
+
+uint64_t   _mulle_string_hash_64( char *s)
+{
+   return( _mulle_fnv1a_64( s, strlen( s)));
+}
+
+
+uint32_t   _mulle_string_hash_chained_32( char *s, uint32_t hash)
+{
+   return( _mulle_fnv1a_chained_32( s, strlen( s), hash));
+}
+
+
+uint64_t   _mulle_string_hash_chained_64( char *s, uint64_t hash)
+{
+   return( _mulle_fnv1a_chained_64( s, strlen( s), hash));
+}
+
 
 
 // Build it with:

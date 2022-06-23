@@ -18,6 +18,30 @@ a location (offset) and a length.
 | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-c/mulle-data/actions)
 
 
+### Hash functions
+
+*mulle-data* uses various hash algorithms, which are not compatible with
+each other. You can compare the hashes of two strings, but you can not compare
+the returned hash by `_mulle_hash_string` for `"foo"` and the hash of
+`mulle_data_hash( mulle_data_make( "foo", 4))` as one is using FNV1A and the
+other is Farmhash (at time of writing).
+
+The returned hash is of `uintptr_t` size, which should be a convenient size
+for hash tables.
+
+
+| Function               | Description
+|------------------------|------------------------------
+| `mulle_hash`           | hash a memory block
+| `mulle_integer_hash`   | hash an integer value
+| `mulle_pointer_hash`   | hash an pointer
+| `mulle_float_hash`     | hash a `float`  floating point value
+| `mulle_double_hash`    | hash a `double` floating point value
+| `mulle_long_long_hash` | hash a `long long` integer value
+| `mulle_hash_pointer`   | hash a pointer.
+| `mulle_hash_string`    | hash a C string
+| `mulle_data_hash`      | hash a mulle_data memory block
+
 
 ### You are here
 

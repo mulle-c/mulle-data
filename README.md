@@ -15,7 +15,7 @@ a location (offset) and a length.
 
 | Release Version
 |-----------------------------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](https://github.com/mulle-c/mulle-data/actions)
+| ![Mulle kybernetiK tag](//img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](//github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](//github.com/mulle-c/mulle-data/actions)
 
 
 ### Hash functions
@@ -73,7 +73,7 @@ and all its dependencies:
 
 ```
 mulle-sde install --prefix /usr/local \
-   https://github.com/mulle-c/mulle-data/archive/latest.tar.gz
+   //github.com/mulle-c/mulle-data/archive/latest.tar.gz
 ```
 
 ### Manual Installation
@@ -84,7 +84,7 @@ Install the requirements:
 Requirements                                | Description
 --------------------------------------------|-----------------------
 [mulle-c11](//github.com/mulle-c/mulle-c11) | C compiler glue
-[farmhash](//github.com/mulle-c/farmhash)   | Data hash function
+[farmhash](//github.com/mulle-c/farmhash-c) | Data hash function
 
 Install into `/usr/local`:
 

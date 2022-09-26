@@ -54,7 +54,7 @@ for hash tables.
 
 Use [mulle-sde](//github.com/mulle-sde) to add mulle-buffer to your project:
 
-```
+``` sh
 mulle-sde dependency add --c --marks no-cmake-inherit --github mulle-c mulle-buffer
 ```
 
@@ -71,9 +71,9 @@ how to add mulle-c source code into your own projects.
 Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-data
 and all its dependencies:
 
-```
+``` sh
 mulle-sde install --prefix /usr/local \
-   //github.com/mulle-c/mulle-data/archive/latest.tar.gz
+   https://github.com/mulle-c/mulle-data/archive/latest.tar.gz
 ```
 
 ### Manual Installation
@@ -88,13 +88,11 @@ Requirements                                | Description
 
 Install into `/usr/local`:
 
-```
-mkdir build 2> /dev/null
-(
-   cd build ;
-   cmake -DCMAKE_INSTALL_PREFIX=/usr/local \
-         -DCMAKE_PREFIX_PATH=/usr/local \
-         -DCMAKE_BUILD_TYPE=Release .. ;
-   make install
-)
+``` sh
+cmake -B build \
+      -DCMAKE_INSTALL_PREFIX=/usr/local \
+      -DCMAKE_PREFIX_PATH=/usr/local \
+      -DCMAKE_BUILD_TYPE=Release &&
+cmake --build build --config Release &&
+cmake --install build --config Release
 ```

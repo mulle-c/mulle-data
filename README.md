@@ -43,6 +43,10 @@ for hash tables.
 | `mulle_data_hash`      | hash a mulle_data memory block
 
 
+// TODO: rename mulle_data_make_empty to mulle_data_zero
+// and mulle_data_make_invalid to mulle_data_null to be samish with
+// mulle-geometry
+
 ### You are here
 
 ![Overview](overview.dot.svg)

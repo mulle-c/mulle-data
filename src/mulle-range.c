@@ -105,8 +105,9 @@ struct mulle_range   *mulle_range_contains_bsearch( struct mulle_range *buf,
    struct mulle_range   *p;
 
    assert( search.length);
-   assert( search.location != mulle_not_found_e);
-   assert( search.location + search.length > search.location);
+
+   if( ! mulle_range_is_valid( search))
+      return( 0);
 
    first  = 0;
    last   = n - 1;
@@ -143,9 +144,9 @@ struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
    struct mulle_range   *p;
 
    assert( search.length);
-   assert( search.location != mulle_not_found_e);
-   assert( search.location + search.length > search.location);
 
+   if( ! mulle_range_is_valid( search))
+      return( 0);
    first  = 0;
    last   = n - 1;
    middle = (first + last) / 2;
@@ -167,4 +168,75 @@ struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
    }
 
    return( 0);
+}
+
+
+unsigned int   mulle_range_subtract( struct mulle_range a,
+                                     struct mulle_range b,
+                                     struct mulle_range result[ 2])
+{
+   uintptr_t   a_end;
+   uintptr_t   b_end;
+
+   // 1. completely separate
+   //
+   //   b.....b_end
+   //                 a.........a_end
+   //
+
+   if( ! mulle_range_intersect( a, b).length)
+   {
+      result[ 0] = a;
+      return( 1);
+   }
+
+   a_end = mulle_range_get_end( a);
+   b_end = mulle_range_get_end( b);
+
+   // 2.
+   //
+   //              a.....a_end
+   //          b..............b_end
+   //
+   //     make a hole
+   //
+   if( b.location <= a.location && b_end >= a_end)
+   {
+      result[ 0] = mulle_range_make( 0, 0);
+      return( 1);
+   }
+
+
+   // 3.
+   //
+   //              b.....b_end
+   //          a..............a_end
+   //
+   //     make a hole
+   //
+   if( a.location < b.location && a_end > b_end)
+   {
+      result[ 0] = mulle_range_make( a.location, b.location - a.location);
+      result[ 1] = mulle_range_make( b_end, a_end - b_end);
+      return( 2);
+   }
+
+   // 4. range removes part of the front
+   //
+   //   b.....b_end
+   //      a.........a_end
+   //
+   if( a_end > b_end)
+   {
+      result[ 0] = mulle_range_make( b_end, a_end - b_end);
+      return( 1);
+   }
+
+   // 5. range removes part of the back
+   //
+   //        b.......b_end
+   //  a.........a_end
+   //
+   result[ 0] = mulle_range_make( a.location, b.location - a.location);
+   return( 1);
 }

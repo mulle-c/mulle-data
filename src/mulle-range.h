@@ -53,11 +53,19 @@ struct mulle_range
 static inline struct mulle_range
    mulle_range_make( uintptr_t location, uintptr_t length)
 {
-    struct mulle_range   range;
+   struct mulle_range   range;
 
-    range.location = location;
-    range.length   = length;
-    return( range);
+/* Oftentimes it's OK to create invalid ranges, and filter them out
+   later with mulle_range_is_valid, as the checking logic needs not to be done 
+   "before" mulle_range is created 
+
+   assert( location >= mulle_range_min && location <= mulle_range_max);
+   assert( location + length <= mulle_range_max);  
+   assert( location + length >= location);         // wrap around
+*/
+   range.location = location;
+   range.length   = length;
+   return( range);
 }
 
 
@@ -81,7 +89,6 @@ static inline struct mulle_range
     range.length   = 0;
     return( range);
 }
-
 
 
 static inline uintptr_t   mulle_range_get_end( struct mulle_range range)
@@ -161,6 +168,13 @@ struct mulle_range   mulle_range_intersect( struct mulle_range range,
 MULLE_DATA_GLOBAL
 struct mulle_range   mulle_range_union( struct mulle_range range,
                                         struct mulle_range other);
+
+// this punches holes into ranges, you can get 1 or 2 ranges back as the
+// result
+MULLE_DATA_GLOBAL
+unsigned int   mulle_range_subtract( struct mulle_range a,
+                                     struct mulle_range b,
+                                     struct mulle_range result[ 2]);
 
 // returns index where location would be inserted
 uintptr_t   mulle_range_hole_bsearch( struct mulle_range *buf,

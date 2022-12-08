@@ -1,0 +1,12 @@
+#
+#
+#
+export MULLE_SOURCETREE_RESOLVE_TAG="NO"
+
+
+#
+#
+#
+export MULLE_SOURCETREE_GRAVEYARD_ENABLED="NO"
+
+

@@ -1,3 +1,8 @@
+## 0.2.0
+
+* new function `mulle_range_subtract`
+
+
 ## 0.1.0
 
 * change some global declarations for windows

@@ -1,6 +1,6 @@
 {
    "name" : "mulle-data",
-   "version" : "0.0.1",
+   "version" : "0.2.0",
    "description" : "#️⃣ A collection of hash functions",
    "homepage" : "https://github.com/mulle-c/mulle-data",
    "bugs" : "https://github.com/mulle-c/mulle-data/issues",
@@ -11,7 +11,7 @@
       "url" : "mulle-c/mulle-data"
    },
    "dependencies" : {
-      "mulle-c11" : "mulle-c/mulle-c11",
-      "src/farmhash" : "mulle-c/farmhash-c"
+      "mulle-c11" : "git://github.com/mulle-c/mulle-c11",
+      "farmhash-c" : "git://github.com/mulle-c/farmhash-c"
    }
 }

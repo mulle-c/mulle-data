@@ -8,7 +8,7 @@
    "license" : "UNLICENSED",
    "repository" : {
       "type" : "git",
-      "url" : "mulle-c/mulle-data"
+      "url" : "github:mulle-c/mulle-data"
    },
    "dependencies" : {
       "mulle-c11" : "git://github.com/mulle-c/mulle-c11",

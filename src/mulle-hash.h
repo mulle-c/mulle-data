@@ -95,7 +95,7 @@ static inline uintptr_t   mulle_float_hash( float f)
       .f = f
    };
 
-   assert( sizeof( float) == sizeof( uint32_t));
+   MULLE_C_ASSERT( sizeof( float) == sizeof( uint32_t));
 
    return( mulle_integer_hash( x.v));
 }

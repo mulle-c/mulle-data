@@ -4,6 +4,7 @@ awk;required
 base64
 basename;required
 bash
+bash;optional
 cat;required
 chgrp;required
 chmod;required
@@ -42,7 +43,6 @@ mknod
 more
 more;required
 mount
-mudo
 mulle-column
 mv;required
 nano
@@ -82,3 +82,4 @@ xargs
 xcodebuild
 xcrun
 zsh
+zsh;optional

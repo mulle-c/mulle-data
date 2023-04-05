@@ -1,0 +1,33 @@
+{
+   config =
+   {
+      showButtons = YES;
+      showCodacy = NO;
+   };
+   authors =
+   (
+      {
+         name="Nat!";
+         url="https://mulle-kybernetik.com/weblog";
+         organization="Mulle kybernetiK"
+      }
+   );
+   project =
+   {
+      description="#️⃣ A collection of hash functions";
+      domain="github";
+      name="mulle-data";
+      user="mulle-c";
+      repo="mulle-data";
+      homepage="https://github.com/mulle-c/mulle-data";
+      license="BSD-3-Clause"
+   };
+   dependencies =
+   (
+      {
+         name="mulle-c11";
+         url="https://github.com/mulle-c/mulle-c11";
+         description="🔀 Cross-platform C compiler glue (and some cpp conveniences)";
+      }
+   )
+}

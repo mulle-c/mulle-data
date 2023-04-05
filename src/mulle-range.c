@@ -1,5 +1,3 @@
-#include "include-private.h"
-
 #include "mulle-range.h"
 
 #include <assert.h>
@@ -57,15 +55,17 @@ struct mulle_range   mulle_range_union( struct mulle_range range,
 
 
 
-// find a hole, this only works if its been ascertained
+//
+// Find a hole, this only works if its been ascertained
 // that location is not contained
-uintptr_t   mulle_range_hole_bsearch( struct mulle_range *buf,
-                                      uintptr_t n,
-                                      intptr_t search_location)
+//
+unsigned int   _mulle_range_hole_bsearch( struct mulle_range *buf,
+                                          unsigned int n,
+                                          uintptr_t search_location)
 {
-   intptr_t             first;
-   intptr_t             last;
-   intptr_t             middle;
+   int                   first;
+   int                   last;
+   int                   middle;
    struct mulle_range   *p;
 
    first  = 0;
@@ -96,17 +96,18 @@ uintptr_t   mulle_range_hole_bsearch( struct mulle_range *buf,
 
 // find
 struct mulle_range   *mulle_range_contains_bsearch( struct mulle_range *buf,
-                                                    uintptr_t n,
+                                                    unsigned int n,
                                                     struct mulle_range search)
 {
-   intptr_t             first;
-   intptr_t             last;
-   intptr_t             middle;
+   int                  first;
+   int                  last;
+   int                  middle;
    struct mulle_range   *p;
 
-   assert( search.length);
-
    if( ! mulle_range_is_valid( search))
+      return( 0);
+
+   if( ! buf || ! n || ! search.length)
       return( 0);
 
    first  = 0;
@@ -135,18 +136,20 @@ struct mulle_range   *mulle_range_contains_bsearch( struct mulle_range *buf,
 
 // find
 struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
-                                                      uintptr_t n,
+                                                      unsigned int n,
                                                       struct mulle_range search)
 {
-   intptr_t             first;
-   intptr_t             last;
-   intptr_t             middle;
+   int                  first;
+   int                  last;
+   int                  middle;
    struct mulle_range   *p;
-
-   assert( search.length);
 
    if( ! mulle_range_is_valid( search))
       return( 0);
+
+   if( ! buf || ! n || ! search.length)
+      return( 0);
+
    first  = 0;
    last   = n - 1;
    middle = (first + last) / 2;

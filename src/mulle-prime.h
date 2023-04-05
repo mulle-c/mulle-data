@@ -27,6 +27,9 @@
 //  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 //  POSSIBILITY OF SUCH DAMAGE.
 //
+#ifndef mulle_prime__h__
+#define mulle_prime__h__
+
 #include "include.h"
 
 #include <stdint.h>
@@ -126,3 +129,5 @@ static inline uintptr_t  mulle_prime_hash_for_depth( uintptr_t value, int depth)
 
    abort();
 }
+
+#endif

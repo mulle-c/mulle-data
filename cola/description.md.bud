@@ -1,0 +1,10 @@
+* bit avalance for integers and pointers
+* FNV1A for hashing strings for hashtables
+* farmhash for (large) data
+
+It contains the convenient `struct mulle_data` to keep `bytes` and
+`length` together and to pass it around.
+
+And it contains `struct mulle_range`, which represents ranges of data with
+a location (offset) and a length.
+

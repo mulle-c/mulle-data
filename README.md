@@ -13,12 +13,14 @@ And it contains `struct mulle_range`, which represents ranges of data with
 a location (offset) and a length.
 
 
-| Release Version
-|-----------------------------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](//github.com/mulle-c/mulle-data/actions)
+| Release Version                                       | Release Notes
+|-------------------------------------------------------|--------------
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](//github.com/mulle-c/mulle-data/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
-### Hash functions
+
+
+## Hash functions
 
 *mulle-data* uses various hash algorithms, which are not compatible with
 each other. You can compare the hashes of two strings, but you can not compare
@@ -43,37 +45,44 @@ for hash tables.
 | `mulle_data_hash`      | hash a mulle_data memory block
 
 
-// TODO: rename mulle_data_make_empty to mulle_data_zero
-// and mulle_data_make_invalid to mulle_data_null to be samish with
-// mulle-geometry
+
+> TODO: rename mulle_data_make_empty to mulle_data_zero
+> and mulle_data_make_invalid to mulle_data_null to be sameish with
+> mulle-geometry
+
 
 ### You are here
 
 ![Overview](overview.dot.svg)
 
 
+
+
+
 ## Add
 
-### Either: link library
-
-Use [mulle-sde](//github.com/mulle-sde) to add mulle-buffer to your project:
+Use [mulle-sde](//github.com/mulle-sde) to add mulle-data to your project:
 
 ``` sh
-mulle-sde dependency add --c --marks no-cmake-inherit --github mulle-c mulle-buffer
+mulle-sde add github:mulle-c/mulle-data
 ```
 
-### Or: add Sources
+To only add the sources of mulle-data with dependency
+sources use [clib](https://github.com/clibs/clib):
 
-Alternatively you can read [STEAL.md](//github.com/mulle-c11/dox/STEAL.md) on
-how to add mulle-c source code into your own projects.
+
+``` sh
+clib install --out src/mulle-c mulle-c/mulle-data
+```
+
+Add `-isystem src/mulle-c` to your `CFLAGS` and compile all the sources that were downloaded with your project.
 
 
 ## Install
 
-### mulle-sde
+### Install with mulle-sde
 
-Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-data
-and all its dependencies:
+Use [mulle-sde](//github.com/mulle-sde) to build and install mulle-data and all dependencies:
 
 ``` sh
 mulle-sde install --prefix /usr/local \
@@ -82,15 +91,13 @@ mulle-sde install --prefix /usr/local \
 
 ### Manual Installation
 
-
 Install the requirements:
 
-Requirements                                | Description
---------------------------------------------|-----------------------
-[mulle-c11](//github.com/mulle-c/mulle-c11) | C compiler glue
-[farmhash](//github.com/mulle-c/farmhash-c) | Data hash function
+| Requirements                                 | Description
+|----------------------------------------------|-----------------------
+| [mulle-c11](https://github.com/mulle-c/mulle-c11)             | 🔀 Cross-platform C compiler glue (and some cpp conveniences)
 
-Install into `/usr/local`:
+Install **mulle-data** into `/usr/local` with [cmake](https://cmake.org):
 
 ``` sh
 cmake -B build \
@@ -100,3 +107,10 @@ cmake -B build \
 cmake --build build --config Release &&
 cmake --install build --config Release
 ```
+
+
+## Author
+
+[Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+
+

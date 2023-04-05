@@ -4,6 +4,7 @@
 #include "include.h"
 
 #include <stdint.h>
+#include <assert.h>
 
 
 
@@ -91,19 +92,6 @@ static inline struct mulle_range
 }
 
 
-static inline uintptr_t   mulle_range_get_end( struct mulle_range range)
-{
-   return( range.location + range.length);
-}
-
-
-static inline int   mulle_range_contains_location( struct mulle_range range,
-                                                   uintptr_t location)
-{
-   return( location - range.location < range.length);
-}
-
-
 static inline int  mulle_range_is_valid( struct mulle_range range)
 {
    uintptr_t   end;
@@ -115,9 +103,132 @@ static inline int  mulle_range_is_valid( struct mulle_range range)
    if( ! range.length)
       return( 1);
 
-   end = mulle_range_get_end( range);
+   end = range.location + range.length;
    return( end > range.location && end <= mulle_range_max + 1);
 }
+
+
+static inline uintptr_t   _mulle_range_get_end( struct mulle_range range)
+{
+   return( range.location + range.length);
+}
+
+
+static inline uintptr_t   mulle_range_get_end( struct mulle_range range)
+{
+     assert( mulle_range_is_valid( range));
+
+   return( range.location + range.length);
+}
+
+
+static inline uintptr_t   _mulle_range_get_min( struct mulle_range range)
+{
+   if( ! range.length)
+      return( mulle_not_found_e);
+   return( range.location);
+}
+
+
+static inline uintptr_t   mulle_range_get_min( struct mulle_range range)
+{
+   assert( mulle_range_is_valid( range));
+   if( ! range.length)
+      return( mulle_not_found_e);
+   return( range.location);
+}
+
+
+static inline uintptr_t   _mulle_range_get_max( struct mulle_range range)
+{
+   if( ! range.length)
+      return( mulle_not_found_e);
+   return( range.location + range.length - 1);
+}
+
+
+static inline uintptr_t   mulle_range_get_max( struct mulle_range range)
+{
+   assert( mulle_range_is_valid( range));
+   if( ! range.length)
+      return( mulle_not_found_e);
+   return( range.location + range.length - 1);
+}
+
+
+static inline int   _mulle_range_contains_location( struct mulle_range range,
+                                                    uintptr_t location)
+{
+   return( location - range.location < range.length);
+}
+
+
+static inline int   mulle_range_contains_location( struct mulle_range range,
+                                                   uintptr_t location)
+{
+   assert( mulle_range_is_valid( range));
+
+   return( location - range.location < range.length);
+}
+
+
+static inline int   mulle_range_less_than_or_equal_to_location( struct mulle_range range,
+                                                                uintptr_t location)
+{
+   if( ! range.length)
+      return( 0);
+
+   return( mulle_range_get_max( range) <= location);
+}
+
+//  |..........|  location.
+static inline int   mulle_range_less_than_location( struct mulle_range range,
+                                                    uintptr_t location)
+{
+   if( ! range.length)
+      return( 0);
+
+   return( mulle_range_get_max( range) < location);
+}
+
+
+static inline int   mulle_range_greater_than_or_equal_to_location( struct mulle_range range,
+                                                                   uintptr_t location)
+{
+   if( ! range.length)
+      return( 0);
+
+   return( range.location >= location);
+}
+
+
+//  location  |..........|
+static inline int   mulle_range_greater_than_location( struct mulle_range range,
+                                                              uintptr_t location)
+{
+   if( ! range.length)
+      return( 0);
+
+   return( range.location > location);
+}
+
+
+//  distance is an absolute value
+static inline uintptr_t   mulle_range_distance_to_location( struct mulle_range range,
+                                                            uintptr_t location)
+{
+   if( ! range.length)
+      return( UINTPTR_MAX);
+
+   if( location >= range.location)
+   {
+      if( location < mulle_range_get_end( range))
+         return( 0);
+      return( location - mulle_range_get_max( range));
+   }
+   return( range.location - location);
+}
+
 
 
 static inline struct mulle_range
@@ -176,19 +287,37 @@ unsigned int   mulle_range_subtract( struct mulle_range a,
                                      struct mulle_range b,
                                      struct mulle_range result[ 2]);
 
-// returns index where location would be inserted
-uintptr_t   mulle_range_hole_bsearch( struct mulle_range *buf,
-                                      uintptr_t n,
-                                      intptr_t search_location);
+
+// this punches holes into ranges, you can get 1 or 2 ranges back as the
+// result
+static inline
+unsigned int   mulle_range_subtract_location( struct mulle_range a,
+                                              uintptr_t location,
+                                              struct mulle_range result[ 2])
+{
+   return( mulle_range_subtract( a, mulle_range_make( location, 1), result));
+}
+
+//
+// Find a hole. Or rather the place in buf, were you would insert a new range.
+// **This only works if its been ascertained that location is not already
+// contained. (i.e. run mulle_range_contains_bsearch beforehand). You get the
+// index back where you want to insert a new range.
+// This can be 0 to n (incl), so don't use the return value unverified to
+// buf, as it could overflow.
+//
+unsigned int   _mulle_range_hole_bsearch( struct mulle_range *buf,
+                                          unsigned int n,
+                                          uintptr_t search_location);
 
 // returns range containing search or NULL
 MULLE_DATA_GLOBAL
 struct mulle_range   *mulle_range_contains_bsearch( struct mulle_range *buf,
-                                                    uintptr_t n,
+                                                    unsigned int n,
                                                     struct mulle_range search);
 
 MULLE_DATA_GLOBAL
 struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
-                                                      uintptr_t n,
+                                                      unsigned int n,
                                                       struct mulle_range search);
 #endif

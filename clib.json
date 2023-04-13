@@ -1,6 +1,6 @@
 {
    "name" : "mulle-data",
-   "version" : "0.2.0",
+   "version" : "0.2.1",
    "description" : "# A collection of hash functions",
    "keywords" : [],
    "license" : "BSD-3-Clause",

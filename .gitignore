@@ -57,6 +57,5 @@ version.old
 .gdb_history
 .ackrc
 wilted/
-src/farmhash-c
 mulle-template-composer-*
 mulle-markdown-preview-*.html

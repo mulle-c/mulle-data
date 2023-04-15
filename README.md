@@ -20,6 +20,7 @@ a location (offset) and a length.
 
 
 
+
 ## Hash functions
 
 *mulle-data* uses various hash algorithms, which are not compatible with
@@ -112,5 +113,6 @@ cmake --install build --config Release
 ## Author
 
 [Nat!](https://mulle-kybernetik.com/weblog) for Mulle kybernetiK
+
 
 

@@ -1,3 +1,9 @@
+### 0.2.1
+
+* remove package.json as it conflicts with clib.json
+* used `mulle_range_is_valid` in asserts in some functions, those have now underscore prefixed variants to skip the assert
+* added functions `mulle_range_greater_than_location` for easier comparison coding in NSIndexSet
+
 ## 0.2.0
 
 * new function `mulle_range_subtract`

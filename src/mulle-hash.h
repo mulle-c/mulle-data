@@ -40,6 +40,8 @@
 
 //
 // Memo: integer multiplication should be unprolematic
+// There is always a 32 bit and a 64 bit version, and uintptr_t is the
+// platform specific preferencel, which chooses between both.
 //
 static inline uint32_t  mulle_hash_avalanche32( uint32_t h)
 {

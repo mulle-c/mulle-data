@@ -18,38 +18,17 @@ a location (offset) and a length.
 | ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](//github.com/mulle-c/mulle-data/actions)| [RELEASENOTES](RELEASENOTES.md) |
 
 
+## API
+
+| Documentation                     | Description
+|-----------------------------------|-------------------
+| [mulle-data](dox/API_DATA.md)     | `struct mulle_data` holds a pointer to a block of memory (`void *bytes`) and its length in bytes (`size_t length`).
+| [mulle-fnv1a](dox/API_FNV1A.md)   | FNV-1a  is a fast, non-cryptographic hash that provides good distribution and low collisions for strings
+| [mulle-hash](dox/API_HASH.md)     | MurmurHash3 and FarmHash for fast, efficient, and high-quality hashes of arbitraty data
+| [mulle-prime](dox/API_PRIME.md)   | Prime number support for hashtables
+| [mulle-range](dox/API_RANGE.md)   | `struct mulle_range` defines a range with a location and length
 
 
-
-## Hash functions
-
-*mulle-data* uses various hash algorithms, which are not compatible with
-each other. You can compare the hashes of two strings, but you can not compare
-the returned hash by `_mulle_hash_string` for `"foo"` and the hash of
-`mulle_data_hash( mulle_data_make( "foo", 4))` as one is using FNV1A and the
-other is Farmhash (at time of writing).
-
-The returned hash is of `uintptr_t` size, which should be a convenient size
-for hash tables.
-
-
-| Function               | Description
-|------------------------|------------------------------
-| `mulle_hash`           | hash a memory block
-| `mulle_integer_hash`   | hash an integer value
-| `mulle_pointer_hash`   | hash an pointer
-| `mulle_float_hash`     | hash a `float`  floating point value
-| `mulle_double_hash`    | hash a `double` floating point value
-| `mulle_long_long_hash` | hash a `long long` integer value
-| `mulle_hash_pointer`   | hash a pointer.
-| `mulle_hash_string`    | hash a C string
-| `mulle_data_hash`      | hash a mulle_data memory block
-
-
-
-> TODO: rename mulle_data_make_empty to mulle_data_zero
-> and mulle_data_make_invalid to mulle_data_null to be sameish with
-> mulle-geometry
 
 
 ### You are here

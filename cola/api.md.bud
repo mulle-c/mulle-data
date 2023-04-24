@@ -1,0 +1,9 @@
+## API
+
+| Documentation                     | Description
+|-----------------------------------|-------------------
+| [mulle-data](dox/API_DATA.md)     | `struct mulle_data` holds a pointer to a block of memory (`void *bytes`) and its length in bytes (`size_t length`).
+| [mulle-fnv1a](dox/API_FNV1A.md)   | FNV-1a  is a fast, non-cryptographic hash that provides good distribution and low collisions for strings
+| [mulle-hash](dox/API_HASH.md)     | MurmurHash3 and FarmHash for fast, efficient, and high-quality hashes of arbitraty data
+| [mulle-prime](dox/API_PRIME.md)   | Prime number support for hashtables
+| [mulle-range](dox/API_RANGE.md)   | `struct mulle_range` defines a range with a location and length

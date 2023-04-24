@@ -38,7 +38,7 @@
 
 
 
-static inline uintptr_t  mulle_prime_for_depth( int depth)
+static inline uintptr_t   mulle_prime_for_depth( int depth)
 {
    MULLE_DATA_GLOBAL
    uintptr_t   mulle_primes__[ 32 + 32 + 1];
@@ -52,7 +52,7 @@ static inline uintptr_t  mulle_prime_for_depth( int depth)
 // this produces a lot of fast code...
 // it looks funny, but rocks on my i7
 //
-static inline uintptr_t  mulle_prime_hash_for_depth( uintptr_t value, int depth)
+static inline uintptr_t   mulle_prime_hash_for_depth( uintptr_t value, int depth)
 {
    switch( depth)
    {

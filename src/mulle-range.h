@@ -39,6 +39,7 @@ struct mulle_range
 
 #define mulle_range_min       (0)
 #define mulle_range_max       (mulle_not_found_e-1)
+#define mulle_range_zero      ((struct mulle_range) { 0, 0 })
 
 // the struct and the three defines need to stay compatible with MulleObjC/mulle-objc-type.h
 
@@ -116,7 +117,7 @@ static inline uintptr_t   _mulle_range_get_end( struct mulle_range range)
 
 static inline uintptr_t   mulle_range_get_end( struct mulle_range range)
 {
-     assert( mulle_range_is_valid( range));
+   assert( mulle_range_is_valid( range));
 
    return( range.location + range.length);
 }
@@ -287,6 +288,20 @@ unsigned int   mulle_range_subtract( struct mulle_range a,
                                      struct mulle_range b,
                                      struct mulle_range result[ 2]);
 
+//
+// Computes the state of 'a' after insertion of a range 'b'. 'b' must be
+// adjacent, or intersect 'a' (else 0 is returned).
+// You get either one or two result ranges back. If you get two, then
+// 'b' created a hole (not part of the result). result[ 0] is the unshifted
+// range and result[1] is the shifted range:
+//
+// Example a=[0-9] b=[2-3], result[ 2] = { [0-2], [5-14] }
+//
+MULLE_DATA_GLOBAL
+unsigned int   mulle_range_insert( struct mulle_range a,
+                                   struct mulle_range b,
+                                   struct mulle_range result[ 2]);
+
 
 // this punches holes into ranges, you can get 1 or 2 ranges back as the
 // result
@@ -320,4 +335,14 @@ MULLE_DATA_GLOBAL
 struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
                                                       unsigned int n,
                                                       struct mulle_range search);
+
+
+
+#define mulle_range_for( name, range)                            \
+   for( uintptr_t name          = range.location,                \
+                  name ## __end = range.location + range.length; \
+        name < name ## __end;                                    \
+        ++name                                                   \
+      )
+
 #endif

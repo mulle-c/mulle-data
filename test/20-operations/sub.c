@@ -2,12 +2,15 @@
 
 #include <stdio.h>
 
-static void  mulle_range_print( struct mulle_range a)
+static void   mulle_range_print( struct mulle_range a)
 {
-   if( ! a.length)
-      printf( "NULL");  
+   if( ! mulle_range_is_valid( a))
+      printf( "INVALID");
    else
-      printf( "%td-%td (%td)", a.location, a.location + a.length - 1, a.length);  
+      if( ! a.length)
+         printf( "NULL");
+      else
+         printf( "%tu-%tu (%tu)", a.location, a.location + a.length - 1, a.length);
 }
 
 

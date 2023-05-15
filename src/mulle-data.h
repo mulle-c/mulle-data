@@ -13,28 +13,28 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE_DATA_VERSION  ((0 << 20) | (2 << 8) | 1)
+#define MULLE__DATA_VERSION  ((0 << 20) | (2 << 8) | 1)
 
 
 static inline unsigned int   mulle_data_get_version_major( void)
 {
-   return( MULLE_DATA_VERSION >> 20);
+   return( MULLE__DATA_VERSION >> 20);
 }
 
 
 static inline unsigned int   mulle_data_get_version_minor( void)
 {
-   return( (MULLE_DATA_VERSION >> 8) & 0xFFF);
+   return( (MULLE__DATA_VERSION >> 8) & 0xFFF);
 }
 
 
 static inline unsigned int   mulle_data_get_version_patch( void)
 {
-   return( MULLE_DATA_VERSION & 0xFF);
+   return( MULLE__DATA_VERSION & 0xFF);
 }
 
 
-MULLE_DATA_GLOBAL
+MULLE__DATA_GLOBAL
 uint32_t   mulle_data_get_version( void);
 
 

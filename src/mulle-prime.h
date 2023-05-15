@@ -40,7 +40,7 @@
 
 static inline uintptr_t   mulle_prime_for_depth( int depth)
 {
-   MULLE_DATA_GLOBAL
+   MULLE__DATA_GLOBAL
    uintptr_t   mulle_primes__[ 32 + 32 + 1];
 
    assert( depth >= -32 && depth <= 32);

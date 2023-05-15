@@ -22,7 +22,7 @@ static void  test( struct mulle_range a)
    mulle_range_print( a);
    printf( ": ");
 
-   mulle_range_for( i, a)
+   mulle_range_for( a, i)
    {
       printf( "%s%td", sep, i);
       sep =", ";

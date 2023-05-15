@@ -12,8 +12,8 @@ struct mulle_range   mulle_range_intersect( struct mulle_range range,
    uintptr_t            end2;
    struct mulle_range   result;
 
-   end1 = mulle_range_get_end( range);
-   end2 = mulle_range_get_end( other);
+   end1 = mulle_range_get_max( range);
+   end2 = mulle_range_get_max( other);
    min  = (end1 < end2) ? end1 : end2;
    location  = (range.location > other.location) ? range.location : other.location;
 
@@ -43,8 +43,8 @@ struct mulle_range   mulle_range_union( struct mulle_range range,
    if( ! range.length)
       return( other);
 
-   end1      = mulle_range_get_end( range);
-   end2      = mulle_range_get_end( other);
+   end1      = mulle_range_get_max( range);
+   end2      = mulle_range_get_max( other);
    end       = (end1 > end2) ? end1 : end2;
    location  = (range.location < other.location) ? range.location : other.location;
 
@@ -157,7 +157,7 @@ struct mulle_range   *mulle_range_intersects_bsearch( struct mulle_range *buf,
    while( first <= last)
    {
       p = &buf[ middle];
-      if( p->location < mulle_range_get_end( search))
+      if( p->location < mulle_range_get_max( search))
       {
          if( mulle_range_intersect( *p, search).length)
             return( p);
@@ -193,8 +193,8 @@ unsigned int   mulle_range_subtract( struct mulle_range a,
       return( 1);
    }
 
-   a_end = mulle_range_get_end( a);
-   b_end = mulle_range_get_end( b);
+   a_end = mulle_range_get_max( a);
+   b_end = mulle_range_get_max( b);
 
    // 2.
    //
@@ -244,7 +244,7 @@ unsigned int   mulle_range_subtract( struct mulle_range a,
 }
 
 
-MULLE_DATA_GLOBAL
+MULLE__DATA_GLOBAL
 unsigned int   mulle_range_insert( struct mulle_range a,
                                    struct mulle_range b,
                                    struct mulle_range result[ 2])
@@ -258,8 +258,8 @@ unsigned int   mulle_range_insert( struct mulle_range a,
    if( ! b.length)
       return( 0); // no like
 
-   a_end = _mulle_range_get_end( a);
-   b_end = _mulle_range_get_end( b);
+   a_end = _mulle_range_get_max( a);
+   b_end = _mulle_range_get_max( b);
 
    // 1. completely separate
    //

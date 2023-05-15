@@ -28,22 +28,22 @@ struct mulle_range invalid_range = mulle_range_make_invalid();
 int is_valid = mulle_range_is_valid(range);
 ```
 
-5. `mulle_range_get_end`: Calculates the end location of the given range.
+5. `mulle_range_get_max`: Calculates the end location of the given range.
 
 ```c
-uintptr_t end = mulle_range_get_end(range);
+uintptr_t end = mulle_range_get_max(range);
 ```
 
-6. `mulle_range_get_min`: Returns the minimum location of the given range.
+6. `mulle_range_get_last_location`: Returns the minimum location of the given range.
 
 ```c
-uintptr_t min = mulle_range_get_min(range);
+uintptr_t min = mulle_range_get_last_location(range);
 ```
 
-7. `mulle_range_get_max`: Returns the maximum location of the given range.
+7. `mulle_range_get_last`: Returns the maximum location of the given range.
 
 ```c
-uintptr_t max = mulle_range_get_max(range);
+uintptr_t max = mulle_range_get_last(range);
 ```
 
 8. `mulle_range_contains_location`: Checks if the given range contains a specified location.

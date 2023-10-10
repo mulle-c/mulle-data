@@ -14,7 +14,6 @@
       "src/mulle-data.h",
       "src/mulle-fnv1a.c",
       "src/mulle-fnv1a.h",
-      "src/mulle-fnva1/main.c",
       "src/mulle-hash.c",
       "src/mulle-hash.h",
       "src/mulle-prime.c",

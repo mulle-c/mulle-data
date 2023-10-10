@@ -8,9 +8,9 @@ if( MULLE_TRACE_INCLUDE)
 endif()
 
 #
-# contents selected with patternfile ??-source--mulle-fnva1
+# contents selected with patternfile ??-source--mulle-fnva1-no-clib
 #
-set( MULLE_FNVA1
+set( MULLE_FNVA1_NO_CLIB
 src/mulle-fnva1/main.c
 )
 

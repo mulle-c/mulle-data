@@ -13,7 +13,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE__DATA_VERSION  ((0 << 20) | (2 << 8) | 1)
+#define MULLE__DATA_VERSION  ((0 << 20) | (3 << 8) | 0)
 
 
 static inline unsigned int   mulle_data_get_version_major( void)

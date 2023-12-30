@@ -29,12 +29,12 @@ int   main( int argc, char *argv[])
 //   b = mulle_range_make( 0, 75);
 
             {
-               n = mulle_range_subtract( a, b, c);
+               mulle_range_subtract( a, b, c);
                mulle_range_print( a);
                printf( " - ");
                mulle_range_print( b);
                printf( " = ");
-               for( i = 0; i < n; i++)
+               for( i = 0; i < 2; i++)
                {
                   assert( mulle_range_is_valid( c[ i]));
                   if( i)

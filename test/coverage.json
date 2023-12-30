@@ -1,0 +1,75 @@
+{
+    "branch_covered": 83,
+    "branch_percent": 92.2,
+    "branch_total": 90,
+    "files": [
+        {
+            "branch_covered": 14,
+            "branch_percent": 1.0,
+            "branch_total": 14,
+            "filename": "mulle-data.c",
+            "line_covered": 16,
+            "line_percent": 1.0,
+            "line_total": 16
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "mulle-data.h",
+            "line_covered": 2,
+            "line_percent": 1.0,
+            "line_total": 2
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "mulle-fnv1a.c",
+            "line_covered": 12,
+            "line_percent": 1.0,
+            "line_total": 12
+        },
+        {
+            "branch_covered": 4,
+            "branch_percent": 1.0,
+            "branch_total": 4,
+            "filename": "mulle-fnv1a.h",
+            "line_covered": 18,
+            "line_percent": 0.9,
+            "line_total": 20
+        },
+        {
+            "branch_covered": 0,
+            "branch_percent": null,
+            "branch_total": 0,
+            "filename": "mulle-hash.c",
+            "line_covered": 8,
+            "line_percent": 1.0,
+            "line_total": 8
+        },
+        {
+            "branch_covered": 56,
+            "branch_percent": 0.9329999999999999,
+            "branch_total": 60,
+            "filename": "mulle-range.c",
+            "line_covered": 105,
+            "line_percent": 0.991,
+            "line_total": 106
+        },
+        {
+            "branch_covered": 9,
+            "branch_percent": 0.75,
+            "branch_total": 12,
+            "filename": "mulle-range.h",
+            "line_covered": 22,
+            "line_percent": 0.9570000000000001,
+            "line_total": 23
+        }
+    ],
+    "gcovr/summary_format_version": "0.2",
+    "line_covered": 183,
+    "line_percent": 97.9,
+    "line_total": 187,
+    "root": "../../src"
+}

@@ -65,3 +65,4 @@ coverage*.html
 *.ir
 *.s
 cola/wilted/
+cola/coverage.json

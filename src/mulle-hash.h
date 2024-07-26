@@ -153,9 +153,9 @@ static inline uintptr_t   mulle_hash_chained( void *bytes, size_t length, uintpt
 }
 
 
-
 MULLE__DATA_GLOBAL
 uint32_t   _mulle_hash_32( void *bytes, size_t length);
+
 
 MULLE__DATA_GLOBAL
 uint64_t   _mulle_hash_64( void *bytes, size_t length);

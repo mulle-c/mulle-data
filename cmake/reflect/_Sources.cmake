@@ -18,7 +18,6 @@ src/mulle-fnva1/main.c
 # contents selected with patternfile ??-source--sources
 #
 set( SOURCES
-src/farmhash-c/farmhash.c
 src/mulle-data.c
 src/mulle-fnv1a.c
 src/mulle-hash.c

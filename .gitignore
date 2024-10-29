@@ -66,3 +66,4 @@ coverage*.html
 *.s
 cola/wilted/
 cola/coverage.json
+cmake-build-*/

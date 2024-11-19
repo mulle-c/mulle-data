@@ -12,6 +12,7 @@ endif()
 
 set( INCLUDE_DIRS
 src
+src/farmhash-c
 src/reflect
 )
 
@@ -33,6 +34,8 @@ src/include.h
 # contents selected with patternfile ??-header--public-headers
 #
 set( PUBLIC_HEADERS
+src/farmhash-c/farmhash.h
+src/farmhash-c/largeint.h
 src/mulle-data.h
 src/mulle-fnv1a.h
 src/mulle-hash.h

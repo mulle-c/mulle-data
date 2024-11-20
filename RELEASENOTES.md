@@ -1,3 +1,10 @@
+### 0.3.1
+
+
+
+
+* improved a test
+
 ## 0.3.0
 
 * changed farmhash to be stable with NDEBUG or not NDEBUG

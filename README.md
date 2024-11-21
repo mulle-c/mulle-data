@@ -17,7 +17,7 @@ a location (offset) and a length.
 
 | Release Version                                       | Release Notes
 |-------------------------------------------------------|--------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=release) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=release)](//github.com/mulle-c/mulle-data/actions) ![Coverage](https://img.shields.io/badge/coverage-97%25%C2%A0-2acf49) | [RELEASENOTES](RELEASENOTES.md) |
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg?branch=master) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg?branch=master)](//github.com/mulle-c/mulle-data/actions) ![Coverage](https://img.shields.io/badge/coverage-97%25%C2%A0-2acf49) | [RELEASENOTES](RELEASENOTES.md) |
 
 
 ## API

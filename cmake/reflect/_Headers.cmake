@@ -11,9 +11,9 @@ endif()
 # contents are derived from the file locations
 
 set( INCLUDE_DIRS
+src/reflect
 src
 src/farmhash-c
-src/reflect
 )
 
 #
@@ -39,6 +39,7 @@ src/farmhash-c/largeint.h
 src/mulle-data.h
 src/mulle-fnv1a.h
 src/mulle-hash.h
+src/mulle-memset.h
 src/mulle-prime.h
 src/mulle-range.h
 )

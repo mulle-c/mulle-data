@@ -22,6 +22,7 @@ src/farmhash-c/farmhash.c
 src/mulle-data.c
 src/mulle-fnv1a.c
 src/mulle-hash.c
+src/mulle-memset.c
 src/mulle-prime.c
 src/mulle-range.c
 )

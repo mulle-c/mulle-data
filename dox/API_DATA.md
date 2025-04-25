@@ -52,5 +52,10 @@ uintptr_t hash =  mulle_data_hash( data);
 7. `mulle_data_hash_chained` computes a chained hash value for the given `mulle_data` structure using either a 32-bit or 64-bit hash function, depending on the size of `uintptr_t`. The `hash` parameter is used as a seed for the hash function.
 
 ```c
-uintptr_t hash = mulle_data_hash_chained( data, seed)
+void        *state = NULL;
+uintptr_t   hash;
+
+mulle_data_hash_chained( data, &state);
+mulle_data_hash_chained( other_data, &state);
+hash = mulle_data_hash_chained( mulle_data_make_empty(), &state);
 ```

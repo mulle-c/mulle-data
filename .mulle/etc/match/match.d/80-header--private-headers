@@ -3,4 +3,4 @@
 private.h
 private.inc
 src/farmhash/*.h
-
+src/xxhash/*.h

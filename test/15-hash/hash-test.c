@@ -34,11 +34,5 @@ int   main( void)
    hash = _mulle_hash_64( "VfL Bochum 1848", 15);
    printf( "64: %#016tx\n", hash);
 
-   hash = _mulle_hash_chained_32( "VfL Bochum 1848", 15, 0);
-   printf( "chain32: %#016tx\n", hash);
-
-   hash = _mulle_hash_chained_64( "VfL Bochum 1848", 15, 0);
-   printf( "hash32: %#016tx\n", hash);
-
    return( 0);
 }

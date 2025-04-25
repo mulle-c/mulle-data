@@ -11,9 +11,16 @@ endif()
 # contents are derived from the file locations
 
 set( INCLUDE_DIRS
+src/xxhash
 src/reflect
 src
-src/farmhash-c
+)
+
+#
+# contents selected with patternfile ??-header--private-headers
+#
+set( PRIVATE_HEADERS
+src/xxhash/xxhash.h
 )
 
 #
@@ -34,12 +41,9 @@ src/include.h
 # contents selected with patternfile ??-header--public-headers
 #
 set( PUBLIC_HEADERS
-src/farmhash-c/farmhash.h
-src/farmhash-c/largeint.h
 src/mulle-data.h
 src/mulle-fnv1a.h
 src/mulle-hash.h
-src/mulle-memset.h
 src/mulle-prime.h
 src/mulle-range.h
 )

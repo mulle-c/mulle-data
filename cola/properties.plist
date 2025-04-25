@@ -3,6 +3,8 @@
    {
       description="#️⃣ A collection of hash functions";
       domain="github";
+      language="c";
+      dialect="c";
       name="mulle-data";
       user="mulle-c";
       repo="mulle-data";
@@ -20,14 +22,14 @@
          user="mulle-c";
       }
    );
-   amalgamated =
+   embedded =
    (
       {
-         description="C99 translation of Geoff Pike's and Jyrki Alakuijala's FarmHash.";
-         domain="clib";
-         name="src/farmhash-c";
-         repo="farmhash-c@*";
-         url="https://github.com/mulle-c/farmhash-c@*";
+         description="xxHash - Extremely fast hash algorithm";
+         domain="github";
+         name="src/xxhash/xxhash.h";
+         repo="xxHash";
+         url="https://github.com/mulle-c/xxHash";
          user="mulle-c";
       }
    );

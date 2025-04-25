@@ -68,3 +68,5 @@ cola/wilted/
 cola/coverage.json
 cmake-build-*/
 .idea/
+.mulle/etc/make/build-dir
+vgcore.*

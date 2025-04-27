@@ -1,3 +1,10 @@
+## 0.4.0
+
+* **BREAKING** changed the hash algorithm from farmhash to xxhash. Now our binary hash is stable across platforms and we can really do chained/streaming hashes now. This necessitated an API change though
+
+* added `mulle_memset_uint32` function for writing 0xdeaddead into memory regions
+
+
 ### 0.3.2
 
 Various small improvements

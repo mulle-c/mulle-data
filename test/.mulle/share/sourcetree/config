@@ -1,1 +1,1 @@
-mulle-data;${MULLE__DATA_NODETYPE:-tar};;4E2FA447-827B-441D-831C-2F9BB7875883;${MULLE__DATA_URL:-https://github.com/nat/mulle-data/archive/${MULLE_TAG}.tar.gz};${MULLE__DATA_BRANCH};${MULLE__DATA_TAG:-latest};;
+mulle-data;${MULLE__DATA_NODETYPE:-tar};;7DE410B7-EF52-4B27-808D-59F5BA18AAA8;${MULLE__DATA_URL:-https://github.com/mulle-nat/mulle-data/archive/${MULLE_TAG}.tar.gz};${MULLE__DATA_BRANCH};${MULLE__DATA_TAG:-latest};;

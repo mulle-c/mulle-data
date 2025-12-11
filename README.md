@@ -1,6 +1,6 @@
 # mulle-data
 
-#### #️⃣ A collection of hash functions
+#### #️⃣  A collection of hash functions
 
 * bit avalance for integers and pointers
 * FNV1A for hashing strings for hashtables
@@ -40,6 +40,18 @@ a location (offset) and a length.
 
 
 
+
+## Quickstart
+
+Install [mulle-core developer](https://github.com/MulleFoundation/foundation-developer?tab=readme-ov-file#install)
+then:
+
+
+``` sh
+mulle-sde init -d my-project -m mulle-core/c-developer executable
+cd my-project
+mulle-sde run
+```
 
 ## Add
 

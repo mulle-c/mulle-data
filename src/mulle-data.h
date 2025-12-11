@@ -151,6 +151,9 @@ static inline void   mulle_data_assert( struct mulle_data data)
 // range is convenient for mulle_data and will be used more in the future
 #include "mulle-range.h"
 
+// custom qsort implementation for cross platform API sameness
+#include "mulle-qsort.h"
+
 /**
  * Computes a hash value for the given `mulle_data` struct.
  *

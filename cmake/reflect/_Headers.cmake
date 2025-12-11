@@ -45,6 +45,7 @@ src/mulle-data.h
 src/mulle-fnv1a.h
 src/mulle-hash.h
 src/mulle-prime.h
+src/mulle-qsort.h
 src/mulle-range.h
 )
 

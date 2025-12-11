@@ -1,7 +1,7 @@
 {
    "name" : "mulle-data",
    "version" : "0.4.0",
-   "description" : "#️⃣ A collection of hash functions",
+   "description" : "#️⃣  A collection of hash functions",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "mulle-c/mulle-data",
@@ -15,6 +15,8 @@
       "src/mulle-hash.h",
       "src/mulle-prime.c",
       "src/mulle-prime.h",
+      "src/mulle-qsort.c",
+      "src/mulle-qsort.h",
       "src/mulle-range.c",
       "src/mulle-range.h",
       "src/reflect/_mulle-data-versioncheck.h",

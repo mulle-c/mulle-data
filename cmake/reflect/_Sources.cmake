@@ -22,5 +22,6 @@ src/mulle-data.c
 src/mulle-fnv1a.c
 src/mulle-hash.c
 src/mulle-prime.c
+src/mulle-qsort.c
 src/mulle-range.c
 )

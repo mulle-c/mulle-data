@@ -1,7 +1,7 @@
 {
    project =
    {
-      description="#️⃣ A collection of hash functions";
+      description="#️⃣  A collection of hash functions";
       domain="github";
       language="c";
       dialect="c";

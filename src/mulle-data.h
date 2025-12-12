@@ -13,7 +13,7 @@
  *
  *  version:  major, minor, patch
  */
-#define MULLE__DATA_VERSION  ((0UL << 20) | (4 << 8) | 0)
+#define MULLE__DATA_VERSION  ((0UL << 20) | (5 << 8) | 0)
 
 
 static inline unsigned int   mulle_data_get_version_major( void)
@@ -219,7 +219,6 @@ static inline struct mulle_data   mulle_data_subdata( struct mulle_data data,
  * @param needle The `mulle_data` struct containing the data to search for.
  * @return A pointer to the first occurrence of the `needle` data within the `haystack` data, or `NULL` if the `needle` data is not found.
  */
-void *mulle_data_search_data(struct mulle_data haystack, struct mulle_data needle);
 MULLE__DATA_GLOBAL
 void   *mulle_data_search_data( struct mulle_data haystack,
                                 struct mulle_data needle);

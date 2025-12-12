@@ -203,7 +203,7 @@ loop:
    }
 }
 
-
+MULLE__DATA_GLOBAL
 MULLE_C_NONNULL_FOURTH
 void   mulle_qsort_r( void *a, size_t n, size_t es, mulle_qsort_r_cmp_t *cmp, void *thunk);
 

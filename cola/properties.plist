@@ -29,7 +29,7 @@
          domain="github";
          name="src/xxhash/xxhash.h";
          repo="xxHash";
-         url="https://github.com/mulle-c/xxHash";
+         url="https://raw.githubusercontent.com/mulle-c/xxHash";
          user="mulle-c";
       }
    );

@@ -1,11 +1,12 @@
 {
    "name" : "mulle-data",
-   "version" : "0.5.0",
+   "version" : "20",
    "description" : "#️⃣  A collection of hash functions",
    "keywords" : [],
    "license" : "BSD-3-Clause",
    "repo" : "mulle-c/mulle-data",
    "src" : [
+      "asset/dox/TOC.md",
       "src/include.h",
       "src/mulle-data.c",
       "src/mulle-data.h",

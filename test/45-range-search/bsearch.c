@@ -18,11 +18,11 @@ static void  test( struct mulle_range  r)
 
    result = mulle_range_intersects_bsearch( range1, 3, r);
    if( result)
-      printf( "[%ld/%ld] intersects [%ld/%ld] \n", r.location, r.length, result->location, result->length);
+      printf( "[%ld/%ld] intersects [%ld/%ld] \n", (long) r.location, (long) r.length, (long) result->location, (long) result->length);
 
    result = mulle_range_contains_bsearch( range1, 3, r);
    if( result)
-      printf( "[%ld/%ld] is contained in [%ld/%ld] \n", r.location, r.length, result->location, result->length);
+      printf( "[%ld/%ld] is contained in [%ld/%ld] \n", (long) r.location, (long) r.length, (long) result->location, (long) result->length);
 }
 
 

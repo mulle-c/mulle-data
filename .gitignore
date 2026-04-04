@@ -77,3 +77,4 @@ test*/**/*.test.*
 build-*/
 .roam
 .graveyard
+*.tmp.*

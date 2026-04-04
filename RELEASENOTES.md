@@ -1,12 +1,12 @@
-## 0.5.0
+### 0.5.1
 
 
 
 
-feature: add cross-platform qsort and range utilities
 
-* new `mulle_qsort_r()` function with BSD `qsort_r` implementation for API consistency across platforms
-* `mulle_range_equals()` checks if two ranges are identical
-* `mulle_range_intersects()` tests if two ranges overlap
-* `mulle_range_equal_to_location()` checks if location matches range start
-* `mulle_range_intersection()` replaces `mulle_range_intersect()` with better naming
+
+
+
+* chained hash functions `(mulle_hash_chained_32/64)` now treat zero-length chunks as updates and only finalize when bytes == NULL, preventing premature finalization and supporting empty-chunk sequences
+* make range helpers (e.g. `mulle_range_intersects,` `_mulle_range_hole_bsearch)` public so callers can link against them
+* add tests exercising chained-hash edge cases (zero-length, multi-chunk sequences)

@@ -6,7 +6,7 @@
       language="c";
       dialect="c";
       name="mulle-data";
-      version="0.5.1";
+       version="0.5.2";
       user="mulle-c";
       repo="mulle-data";
       homepage="https://github.com/mulle-c/mulle-data";

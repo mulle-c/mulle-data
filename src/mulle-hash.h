@@ -138,7 +138,7 @@ static inline uintptr_t   mulle_integer_hash( uintptr_t p)
  * @param p The pointer value to hash.
  * @return The avalanched hash value of the input pointer.
  */
-static inline uintptr_t   mulle_pointer_hash( void *p)
+static inline uintptr_t   mulle_pointer_hash( const void *p)
 {
    return( mulle_hash_avalanche( (uintptr_t) p));
 }

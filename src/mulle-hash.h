@@ -265,7 +265,7 @@ static inline uintptr_t   mulle_long_long_hash( long long value)
  * @return The 32-bit chained hash value. Only valid when bytes is NULL.
  */
 MULLE__DATA_GLOBAL
-uint32_t   mulle_hash_chained_32( void *bytes, size_t length, void **state_p);
+uint32_t   mulle_hash_chained_32( const void *bytes, size_t length, void **state_p);
 
 /**
  * Calculates a chained 64-bit hash value for the given bytes.
@@ -289,7 +289,7 @@ uint32_t   mulle_hash_chained_32( void *bytes, size_t length, void **state_p);
  * @return The 64-bit chained hash value. Only valid when bytes is NULL.
  */
 MULLE__DATA_GLOBAL
-uint64_t   mulle_hash_chained_64( void *bytes, size_t length, void **state_p);
+uint64_t   mulle_hash_chained_64( const void *bytes, size_t length, void **state_p);
 
 
 /**
@@ -315,7 +315,7 @@ uint64_t   mulle_hash_chained_64( void *bytes, size_t length, void **state_p);
  * @param state_p The opaque hash state
  * @return The chained hash value. Only valid when bytes was NULL.
  */
-static inline uintptr_t   mulle_hash_chained( void *bytes,
+static inline uintptr_t   mulle_hash_chained( const void *bytes,
                                                size_t length,
                                                void **state_p)
 {
@@ -383,7 +383,7 @@ static inline void   mulle_hash_chained_done( void **state_p)
  * @param length The length of the byte array.
  * @param state_p The opaque hash state (initialise *state_p to NULL).
  */
-static inline void   mulle_hash_chained_32_add( void *bytes,
+static inline void   mulle_hash_chained_32_add( const void *bytes,
                                                 size_t length,
                                                 void **state_p)
 {
@@ -412,7 +412,7 @@ static inline uint32_t   mulle_hash_chained_32_final( void **state_p)
  * @param length The length of the byte array.
  * @param state_p The opaque hash state (initialise *state_p to NULL).
  */
-static inline void   mulle_hash_chained_64_add( void *bytes,
+static inline void   mulle_hash_chained_64_add( const void *bytes,
                                                 size_t length,
                                                 void **state_p)
 {
@@ -441,7 +441,7 @@ static inline uint64_t   mulle_hash_chained_64_final( void **state_p)
  * @param length The length of the byte array.
  * @param state_p The opaque hash state (initialise *state_p to NULL).
  */
-static inline void   mulle_hash_chained_add( void *bytes,
+static inline void   mulle_hash_chained_add( const void *bytes,
                                              size_t length,
                                              void **state_p)
 {
@@ -475,7 +475,7 @@ static inline uintptr_t   mulle_hash_chained_final( void **state_p)
  * @return The 32-bit hash value.
  */
 MULLE__DATA_GLOBAL
-uint32_t   _mulle_hash_32( void *bytes, size_t length);
+uint32_t   _mulle_hash_32( const void *bytes, size_t length);
 
 
 /**
@@ -489,7 +489,7 @@ uint32_t   _mulle_hash_32( void *bytes, size_t length);
  * @return The 64-bit hash value.
  */
 MULLE__DATA_GLOBAL
-uint64_t   _mulle_hash_64( void *bytes, size_t length);
+uint64_t   _mulle_hash_64( const void *bytes, size_t length);
 
 
 // -----------------------------------------------------------------------
@@ -516,7 +516,7 @@ uint64_t   _mulle_hash_64( void *bytes, size_t length);
  * @param length The length of the byte array.
  * @return The 32-bit hash value.
  */
-static inline uint32_t   mulle_hash_32( void *bytes, size_t length)
+static inline uint32_t   mulle_hash_32( const void *bytes, size_t length)
 {
    assert( bytes || ! length);
    if( ! bytes)
@@ -536,7 +536,7 @@ static inline uint32_t   mulle_hash_32( void *bytes, size_t length)
  * @param length The length of the byte array.
  * @return The 64-bit hash value.
  */
-static inline uint64_t   mulle_hash_64( void *bytes, size_t length)
+static inline uint64_t   mulle_hash_64( const void *bytes, size_t length)
 {
    assert( bytes || ! length);
    if( ! bytes)
@@ -558,7 +558,7 @@ static inline uint64_t   mulle_hash_64( void *bytes, size_t length)
  * @param length The length of the byte array.
  * @return The hash value.
  */
-static inline uintptr_t   _mulle_hash( void *bytes, size_t length)
+static inline uintptr_t   _mulle_hash( const void *bytes, size_t length)
 {
    if( sizeof( uintptr_t) == sizeof( uint32_t))
       return( (uintptr_t) _mulle_hash_32( bytes, length));
@@ -587,7 +587,7 @@ static inline uintptr_t   _mulle_hash( void *bytes, size_t length)
  * @param length The length of the byte array.
  * @return The hash value.
  */
-static inline uintptr_t   mulle_hash( void *bytes, size_t length)
+static inline uintptr_t   mulle_hash( const void *bytes, size_t length)
 {
    assert( bytes || ! length);
    if( ! bytes)

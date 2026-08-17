@@ -45,8 +45,6 @@
 #include <string.h>
 
 
-#pragma clang diagnostic ignored "-Wparentheses"
-
 static void   print_hash( char *s, size_t len,
                           unsigned long long value,
                           char *prefix, char *suffix)
@@ -57,8 +55,8 @@ static void   print_hash( char *s, size_t len,
 
    s1 = s;
    s2 = buf;
-   while( c = *s1++ && s2 < &buf[ sizeof( buf) - 1])
-      *s2++ = (char) toupper( c);
+   while( (c = *s1++) != 0 && s2 < &buf[ sizeof( buf) - 1])
+      *s2++ = (char) toupper( (unsigned char) c);
    *s2 = 0;
 
    printf( "#define %s%s%s   0x%08llx  // \"%s\"\n",

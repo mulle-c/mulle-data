@@ -4,35 +4,32 @@
 
 int   main( void)
 {
-   uintptr_t  hash;
+   // mulle_hash(NULL, 0) == mulle_hash("", 0) — no sentinel
+   printf( "null==empty: %d\n",
+           mulle_hash( NULL, 0) == mulle_hash( "", 0));
 
-   hash = mulle_hash( NULL, 0);
-   printf( "0x%016tx\n", hash);
+   // pointer-width hash of data is non-zero
+   printf( "data!=0: %d\n",
+           mulle_hash( "VfL Bochum 1848", 15) != 0);
 
-   hash = mulle_hash( "VfL Bochum 1848", 15);
-   printf( "data: %#016tx\n", hash);
+   // mulle_integer_hash and mulle_pointer_hash agree for same numeric value
+   printf( "int==ptr: %d\n",
+           mulle_integer_hash( 1848) == mulle_pointer_hash( (void *) 1848));
 
-   hash = mulle_integer_hash( 1848);
-   printf( "integer: %#016tx\n", hash);
+   // mulle_integer_hash == mulle_long_long_hash for values that fit
+   printf( "int==ll: %d\n",
+           mulle_integer_hash( 1848) == mulle_long_long_hash( 1848));
 
-   hash = mulle_long_long_hash( 1848);
-   printf( "long long %#016tx\n", hash);
+   // float and double of same value may differ (different representation widths)
+   // but each should be non-zero
+   printf( "float!=0: %d\n", mulle_float_hash( 1848.0f) != 0);
+   printf( "double!=0: %d\n", mulle_double_hash( 1848.0) != 0);
 
-   hash = mulle_float_hash( 1848.0);
-   printf( "float %#016tx\n", hash);
-
-   hash = mulle_double_hash( 1848.0);
-   printf( "double: %#016tx\n", hash);
-
-   hash = mulle_pointer_hash( (void *) 1848);
-   printf( "pointer: %#016tx\n", hash);
-
-   // leftovers
-   hash = _mulle_hash_32( "VfL Bochum 1848", 15);
-   printf( "32: %#016tx\n", hash);
-
-   hash = _mulle_hash_64( "VfL Bochum 1848", 15);
-   printf( "64: %#016tx\n", hash);
+   // pinned-width hashes are stable across platforms
+   printf( "32: 0x%08lx\n",
+           (unsigned long) _mulle_hash_32( "VfL Bochum 1848", 15));
+   printf( "64: 0x%016llx\n",
+           (unsigned long long) _mulle_hash_64( "VfL Bochum 1848", 15));
 
    return( 0);
 }

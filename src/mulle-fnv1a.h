@@ -427,4 +427,4 @@ static inline uintptr_t   _mulle_string_hash_chained( char *s, uintptr_t hash)
    return( (uintptr_t) _mulle_string_hash_chained_64( s, (uint64_t) hash));
 }
 
-#endif /* mulle _objc_fnv1a_h */
+#endif /* mulle_fnv1a_h__ */

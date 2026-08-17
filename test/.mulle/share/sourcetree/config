@@ -1,1 +1,1 @@
-mulle-data;${MULLE__DATA_NODETYPE:-tar};;61CA90CA-BF0B-4F3D-ACCE-9C8836424043;${MULLE__DATA_URL:-https://github.com/mulle-kybernetik-tv/mulle-data/archive/${MULLE_TAG}.tar.gz};${MULLE__DATA_BRANCH};${MULLE__DATA_TAG:-latest};;
+mulle-data;${MULLE__DATA_NODETYPE:-tar};;83A67188-5CD3-434F-9F54-044F39D410F6;${MULLE__DATA_URL:-https://github.com/nat/mulle-data/archive/${MULLE_TAG}.tar.gz};${MULLE__DATA_BRANCH};${MULLE__DATA_TAG:-latest};;

@@ -14,19 +14,19 @@ struct mulle_data
 1. `mulle_data_make` creates a `mulle_data` structure with the given bytes and length.
 
 ```c
-struct mulle_data   data = mulle_data_make_empty( "foo", 4);
+struct mulle_data   data = mulle_data_make( "foo", 4);
 ```
 
-2. `mulle_data_make_empty` creates an empty `mulle_data` structure, with a `NULL` bytes pointer and a length of 0.
+2. `mulle_data_make_empty` creates an empty `mulle_data` structure, with a bytes pointer pointing to `""` (empty string) and a length of 0.
 
 ```c
-struct mulle_data   data = mulle_data_make_empty()
+struct mulle_data   data = mulle_data_make_empty();
 ```
 
-3. `mulle_data_make_invalid` creates an invalid `mulle_data` structure, with a `NULL` bytes pointer and a length of `(size_t) -1`.
+3. `mulle_data_make_invalid` creates an invalid `mulle_data` structure, with a `NULL` bytes pointer and a length of 0.
 
 ```c
-struct mulle_data   data = mulle_data_make_invalid()
+struct mulle_data   data = mulle_data_make_invalid();
 ```
 
 4. `mulle_data_is_empty` checks if the given `mulle_data` structure is empty, i.e., if its length is 0.
@@ -36,11 +36,11 @@ struct mulle_data  data = mulle_data_make_empty();
 int is_empty = mulle_data_is_empty( data);
 ```
 
-5. `mulle_data_is_invalid` checks if the given `mulle_data` structure is invalid, i.e., if its length is `(size_t) -1`.
+5. `mulle_data_is_invalid` checks if the given `mulle_data` structure is invalid, i.e., if its bytes pointer is `NULL`.
 
 ```c
 struct mulle_data  data = mulle_data_make_empty();
-int is_valid = ! mulle_data_is_invalid( data)
+int is_valid = ! mulle_data_is_invalid( data);
 ```
 
 6. `mulle_data_hash` computes a hash value for the given `mulle_data` structure using either a 32-bit or 64-bit hash function, depending on the size of `uintptr_t`.
@@ -49,7 +49,7 @@ int is_valid = ! mulle_data_is_invalid( data)
 uintptr_t hash =  mulle_data_hash( data);
 ```
 
-7. `mulle_data_hash_chained` computes a chained hash value for the given `mulle_data` structure using either a 32-bit or 64-bit hash function, depending on the size of `uintptr_t`. The `hash` parameter is used as a seed for the hash function.
+7. `mulle_data_hash_chained` computes a chained hash value for the given `mulle_data` structure using either a 32-bit or 64-bit hash function, depending on the size of `uintptr_t`. The state pointer must be initialised to NULL. Pass `mulle_data_make_invalid()` (bytes==NULL) to finalise.
 
 ```c
 void        *state = NULL;
@@ -57,5 +57,16 @@ uintptr_t   hash;
 
 mulle_data_hash_chained( data, &state);
 mulle_data_hash_chained( other_data, &state);
-hash = mulle_data_hash_chained( mulle_data_make_empty(), &state);
+hash = mulle_data_hash_chained( mulle_data_make_invalid(), &state);
+```
+
+Or using the type-safe wrappers directly:
+
+```c
+void        *state = NULL;
+uintptr_t   hash;
+
+mulle_hash_chained_add( data.bytes, data.length, &state);
+mulle_hash_chained_add( other_data.bytes, other_data.length, &state);
+hash = mulle_hash_chained_final( &state);
 ```

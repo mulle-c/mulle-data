@@ -1,9 +1,8 @@
-0x0000000000000000
-data: 0x1d20234e9e711e26
-integer: 0x23cc2a942c86a786
-long long 0x23cc2a942c86a786
-float 0xc2d1a2481b3ff300
-double: 0xc2d1a2481b3ff300
-pointer: 0x23cc2a942c86a786
-32: 0x000000fc64daae
+null==empty: 1
+data!=0: 1
+int==ptr: 1
+int==ll: 1
+float!=0: 1
+double!=0: 1
+32: 0xfc64daae
 64: 0x1d20234e9e711e26

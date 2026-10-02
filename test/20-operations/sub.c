@@ -19,7 +19,7 @@ int   main( int argc, char *argv[])
    struct mulle_range   a;
    struct mulle_range   b;
    struct mulle_range   c[ 2];
-   unsigned int         i, n;
+   unsigned int         i;
 
    for( a.location = 0; a.location < 100; a.location += 25)
       for( b.location = 0; b.location < 100; b.location += 25)

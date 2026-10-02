@@ -10,6 +10,7 @@
       repo="mulle-data";
       homepage="https://github.com/mulle-c/mulle-data";
       license="BSD-3-Clause";
+      version="0.6.1";
    };
    dependencies =
    (

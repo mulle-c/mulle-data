@@ -14,7 +14,6 @@ struct mulle_range    range1[] =
 static void  test( struct mulle_range  r)
 {
    struct mulle_range  *result;
-   unsigned int        hole;
 
    result = mulle_range_intersects_bsearch( range1, 3, r);
    if( result)

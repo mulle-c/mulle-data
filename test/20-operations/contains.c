@@ -15,7 +15,6 @@ int   main( int argc, char *argv[])
 {
    struct mulle_range   a;
    struct mulle_range   b;
-   unsigned int         i, n;
    int                  flag;
 
    for( a.location = 0; a.location < 4; a.location += 1)

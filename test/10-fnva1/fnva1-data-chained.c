@@ -5,7 +5,6 @@
 static void   test_32()
 {
    uint32_t   hash;
-   char       *s;
 
    hash = _mulle_fnv1a_init_32();
    hash = _mulle_fnv1a_chained_32( "VfL", 3, hash);

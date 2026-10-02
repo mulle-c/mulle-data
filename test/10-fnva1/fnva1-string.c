@@ -5,7 +5,6 @@
 static void   test_32()
 {
    uint32_t   hash;
-   char       *s;
 
    hash = _mulle_string_hash_32( "VfL Bochum 1848");
    printf( "%#08x\n", hash);

@@ -42,8 +42,8 @@
 <!-- mulle&#45;data&#45;&gt;xxhash.h -->
 <g id="edge2" class="edge">
 <title>mulle&#45;data&#45;&gt;xxhash.h</title>
-<path fill="none" stroke="black" d="M105.48,-71.7C111.29,-63.73 118.3,-54.1 124.74,-45.26"/>
-<polygon fill="black" stroke="black" points="127.46,-47.47 130.52,-37.33 121.8,-43.35 127.46,-47.47"/>
+<path fill="none" stroke="#666666" d="M105.48,-71.7C111.72,-63.14 119.35,-52.66 126.17,-43.3"/>
+<ellipse fill="#666666" stroke="#666666" cx="128.76" cy="-39.74" rx="4" ry="4"/>
 </g>
 </g>
 </svg>

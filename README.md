@@ -17,7 +17,7 @@ a location (offset) and a length.
 
 | Release Version                                       | Release Notes  | AI Documentation
 |-------------------------------------------------------|----------------|---------------
-| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg)](//github.com/mulle-c/mulle-data/actions) | [RELEASENOTES](RELEASENOTES.md) | [DeepWiki for mulle-data](https://deepwiki.com/mulle-c/mulle-data)
+| ![Mulle kybernetiK tag](https://img.shields.io/github/tag/mulle-c/mulle-data.svg) ![standard: C11](pix/c11.svg) ![apis: ansi](pix/apis-ansi.svg) ![memory: allocator](pix/memory-allocator.svg) ![threads: threadsafe](pix/thread-threadsafe.svg) [![Build Status](https://github.com/mulle-c/mulle-data/workflows/CI/badge.svg)](//github.com/mulle-c/mulle-data/actions) ![Coverage](https://img.shields.io/badge/coverage-97%25%C2%A0-2acf49) | [RELEASENOTES](RELEASENOTES.md) | [DeepWiki for mulle-data](https://deepwiki.com/mulle-c/mulle-data)
 
 
 ## API
@@ -58,23 +58,23 @@ In your code include its umbrella header:
 #include <mulle-core/mulle-core.h>
 ```
 
-In your project add mulle-core as a git submodule and link against it:
-
-``` bash
-git submodule add -f "https://github.com/mulle-core/mulle-core.git" \
-                     "stash/mulle-core"
-git submodule update --init --recursive
-```
-
-then add these comands to your `CMakeLists.txt`:
+Add mulle-core to your `CMakeLists.txt` with
+[FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html):
 
 ``` cmake
-include_directories( SYSTEM "stash/mulle-core/src")
-add_subdirectory( stash/mulle-core)
+include( FetchContent)
+
+set( MULLE__CORE_TAG "master" CACHE STRING "branch or tag to fetch mulle-core from")
+
+FetchContent_Declare( MULLE__CORE
+   GIT_REPOSITORY https://github.com/mulle-core/mulle-core.git
+   GIT_TAG        "${MULLE__CORE_TAG}")
+FetchContent_MakeAvailable( MULLE__CORE)
+
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-core)
 ```
 
-Or let [mulle-sde](//github.com/mulle-sde) do it:
+Or add to your mulle-sde project with:
 
 ``` sh
 mulle-sde add mulle-core/mulle-core
@@ -91,35 +91,32 @@ In your code include its header:
 #include <mulle-data/mulle-data.h>
 ```
 
-Add mulle-data and dependencies as git submodules and link against
-them:
-
-``` bash
-git submodule add -f --name "mulle-c11" \
-                            "https://github.com/mulle-c/mulle-c11.git" \
-                            "stash/mulle-c11"
-git submodule add -f --name "src/xxhash/xxhash.h" \
-                            "https://raw.githubusercontent.com/mulle-c/xxHash/refs/heads/dev/xxhash.h" \
-                            "stash/src/xxhash/xxhash.h"
-git submodule add -f --name "mulle-data" \
-                        "https://github.com/mulle-c/mulle-data" \
-                        "stash/mulle-data"
-git submodule update --init --recursive
-```
+Add mulle-data and its dependencies to your `CMakeLists.txt` with
+[FetchContent](https://cmake.org/cmake/help/latest/module/FetchContent.html):
 
 ``` cmake
+include( FetchContent)
+
 include_directories( SYSTEM "${CMAKE_BINARY_DIR}/include")
 
-add_subdirectory( stash/mulle-c11)
-add_subdirectory( stash/src/xxhash/xxhash.h)
-add_subdirectory( stash/mulle-data)
+set( MULLE__C11_TAG "master" CACHE STRING "branch or tag to fetch mulle-c11 from")
 
-target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-c11)
-target_link_libraries( ${PROJECT_NAME} PUBLIC src/xxhash/xxhash.h)
+FetchContent_Declare( MULLE__C11
+   GIT_REPOSITORY https://github.com/mulle-c/mulle-c11.git
+   GIT_TAG        "${MULLE__C11_TAG}")
+FetchContent_MakeAvailable( MULLE__C11)
+
+set( MULLE__DATA_TAG "master" CACHE STRING "branch or tag to fetch mulle-data from")
+
+FetchContent_Declare( MULLE__DATA
+   GIT_REPOSITORY https://github.com/mulle-c/mulle-data.git
+   GIT_TAG        "${MULLE__DATA_TAG}")
+FetchContent_MakeAvailable( MULLE__DATA)
+
 target_link_libraries( ${PROJECT_NAME} PUBLIC mulle-data)
 ```
 
-Or let [mulle-sde](//github.com/mulle-sde) do it:
+Or add to your mulle-sde project with:
 
 ``` sh
 mulle-sde add github:mulle-c/mulle-data

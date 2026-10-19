@@ -1,6 +1,11 @@
 ### 0.6.1
 
-Various small improvements
+
+
+
+* plain `add_subdirectory()` consumers now inherit the include directory and find headers by their installed-style path again
+* force-link `(WHOLE_ARCHIVE)` propagation now requires CMake 3.30 instead of 3.24
+* build now defaults to strict C11 with extensions off, matching the advertised ANSI/ISO C claim
 
 ## 0.6.0
 
